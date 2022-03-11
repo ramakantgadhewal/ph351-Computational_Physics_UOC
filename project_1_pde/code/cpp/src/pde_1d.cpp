@@ -2,6 +2,8 @@
 #include <cmath>
 #include <vector>
 #include <array>
+#include <fstream>
+#include <filesystem>
 using namespace std;
 
 const double PI = M_PI;
@@ -101,7 +103,7 @@ int main()
         {
             s2 += S[t]*f[t];
         }
-
+        E[k] = s1/(2*h)-h*s2;
     }
 
     for(int i=0; i<N; i++)
@@ -112,13 +114,25 @@ int main()
             case 0: field[i] = -(f[i+1]-f[i])/h;
             default: field[i] = -(f[i+1]-f[i-1])/(2*h);
         }
-
     }
 
-    // for(int i=0; i<N; i++)
-    // {
-    //     cout << field[i] << endl;
-    // }
+    // Create data directory to save results
+    namespace fs = std::filesystem;
+    fs::path p=fs::current_path();
+    fs::create_directory(p+="/data");
+    ofstream outstr{"data/energy_data_1d.dat"};
+    for(int i=0; i<E.size(); i++)
+    {
+        outstr << E[i] << endl;
+    }
+    outstr.close();
+
+    ofstream outstr{"data/energy_data.dat"};
+    for(int i=0; i<E.size(); i++)
+    {
+        outstr << E[i] << endl;
+    }
+    outstr.close();
 
     cout << endl;
     return 0;
