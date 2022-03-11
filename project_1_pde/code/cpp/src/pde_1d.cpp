@@ -35,6 +35,7 @@ int main()
     double s1;
     double s2;
 
+    // Calculation of potential and Energy
     for(int k=0; k<u; k++)
     {
         s1 = 0;
@@ -46,6 +47,7 @@ int main()
         E[k] = s1/(2*h)-h*s2;
     }
 
+    // Calculation of the field
     for(int i=0; i<N; i++)
     {
         switch(i)
@@ -56,33 +58,33 @@ int main()
         }
     }
 
-    // Create data directory to save results
+    // Create data directory to save results for plotting later
     namespace fs = std::filesystem;
     fs::path p=fs::current_path();
-    fs::create_directory(p+="/data");
+    fs::create_directory(p+="/data_1d");
 
-    ofstream energy{"data/energy_data_1d.dat"};
+    ofstream energy{"data_1d/energy_data_1d.dat"};
     for(int i=0; i<E.size(); i++)
     {
         energy << E[i] << endl;
     }
     energy.close();
 
-    ofstream pot{"data/potential_1d.dat"};
+    ofstream pot{"data_1d/potential_1d.dat"};
     for(int i=0; i<potential.size(); i++)
     {
         pot << potential[i] << endl;
     }
     pot.close();
 
-    ofstream Field{"data/field_1d.dat"};
+    ofstream Field{"data_1d/field_1d.dat"};
     for(int i=0; i<field.size(); i++)
     {
         Field << field[i] << endl;
     }
     Field.close();
 
-    ofstream Source{"data/source_1d.dat"};
+    ofstream Source{"data_1d/source_1d.dat"};
     for(int i=0; i<S.size(); i++)
     {
         Source << S[i] << endl;
