@@ -120,20 +120,34 @@ int main()
     namespace fs = std::filesystem;
     fs::path p=fs::current_path();
     fs::create_directory(p+="/data");
-    ofstream outstr{"data/energy_data_1d.dat"};
+
+    ofstream energy{"data/energy_data_1d.dat"};
     for(int i=0; i<E.size(); i++)
     {
-        outstr << E[i] << endl;
+        energy << E[i] << endl;
     }
-    outstr.close();
+    energy.close();
 
-    ofstream outstr{"data/energy_data.dat"};
-    for(int i=0; i<E.size(); i++)
+    ofstream pot{"data/potential_1d.dat"};
+    for(int i=0; i<f.size(); i++)
     {
-        outstr << E[i] << endl;
+        pot << f[i] << endl;
     }
-    outstr.close();
+    pot.close();
 
-    cout << endl;
+    ofstream Field{"data/field_1d.dat"};
+    for(int i=0; i<field.size(); i++)
+    {
+        Field << field[i] << endl;
+    }
+    Field.close();
+
+    ofstream Source{"data/source_1d.dat"};
+    for(int i=0; i<S.size(); i++)
+    {
+        Source << S[i] << endl;
+    }
+    Source.close();
+    
     return 0;
 }
