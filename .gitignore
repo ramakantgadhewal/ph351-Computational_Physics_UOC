@@ -1,2 +1,8 @@
 # Ignore .vscode stuff
 .vscode/*
+
+# Ignore Data Files
+data/*
+project_*_*/code/data/*
+project_*_*/code/cpp/data/*
+project_*_*/code/python/data/*
