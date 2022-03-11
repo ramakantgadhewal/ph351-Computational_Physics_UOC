@@ -86,11 +86,13 @@ int main()
     potential[N-1]=0;
 
     // Iteration Variables
-    double s1=0;
-    double s2=0;
+    double s1;
+    double s2;
 
     for(int k=0; k<u; k++)
     {
+        s1 = 0;
+        s2 = 0;
         for(int i=1; i<N-1; i++) potential[i] = 0.5*(potential[i+1]+potential[i-1]+pow(h,2)*S[i]);
         for(int j=1; j<N; j++) s1 += pow(potential[j]-potential[j-1], 2);
         for(int t=1; t<N-1; t++) s2 += S[t]*potential[t];
