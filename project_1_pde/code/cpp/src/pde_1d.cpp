@@ -8,7 +8,7 @@ using namespace std;
 
 const double PI = M_PI;
 
-template<class T>
+template<typename T>
 vector<T> linspace(double min, double max, int n)
 {
     vector<T> result;
