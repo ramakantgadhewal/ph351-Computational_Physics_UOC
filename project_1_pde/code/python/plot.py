@@ -1,6 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import sys
+sys.path.insert(0,'../../../')
+from universal_code.src.python.saveFig import saveFig
 
 def main():
     # 1D Case
@@ -10,8 +13,33 @@ def main():
     potential = np.loadtxt(data_path+"potential_1d.dat")
     source = np.loadtxt(data_path+"source_1d.dat")
     
-    plt.plot(field)
-    plt.show()
-
+    _, ax1 = plt.subplots()
+    ax1.plot(range(len(energy)), energy)
+    ax1.set_xlabel("Steps")
+    ax1.set_ylabel("Energy")
+    # plt.title("Energy of the system")
+    saveFig(fig_id="energy_1d_plot", destination=os.getcwd())
+    
+    _, ax2 = plt.subplots()
+    ax2.plot(field)
+    ax2.set_xlabel("Steps")
+    ax2.set_ylabel("Electric Field")
+    # plt.title("Energy of the system")
+    saveFig(fig_id="field_1d_plot", destination=os.getcwd())
+    
+    _, ax3 = plt.subplots()
+    ax3.plot(potential)
+    ax3.set_xlabel("Steps")
+    ax3.set_ylabel("Potential")
+    # plt.title("Energy of the system")
+    saveFig(fig_id="potential_1d_plot", destination=os.getcwd())
+    
+    _, ax4 = plt.subplots()
+    ax4.plot(source)
+    ax4.set_xlabel("Steps")
+    ax4.set_ylabel("Source")
+    # plt.title("Energy of the system")
+    saveFig(fig_id="source_1d_plot", destination=os.getcwd())
+    
 if __name__=="__main__":
     main()
