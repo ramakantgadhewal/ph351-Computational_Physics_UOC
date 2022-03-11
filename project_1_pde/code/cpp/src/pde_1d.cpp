@@ -73,7 +73,7 @@ int main()
 
     double h = double (xmax-xmin)/N;
     vector<double> S = zeros_1d<double>(N);
-    vector<double> f = zeros_1d<double>(N);
+    vector<double> potential = zeros_1d<double>(N);
     
     // Initialize Source
     for(int i=0; i<S.size(); i++)
@@ -82,8 +82,8 @@ int main()
     }
 
     // Set boundary conditions
-    f[0]=0;
-    f[N-1]=0;
+    potential[0]=0;
+    potential[N-1]=0;
 
     // Iteration Variables
     double s1=0;
@@ -91,18 +91,10 @@ int main()
 
     for(int k=0; k<u; k++)
     {
-        for(int i=1; i<N-1; i++)
-        {
-            f[i] = 0.5*(f[i+1]+f[i-1]+pow(h,2)*S[i]);
-        }
-        for(int j=1; j<N; j++)
-        {
-            s1 += pow(f[j]-f[j-1], 2);
-        }
-        for(int t=1; t<N-1; t++)
-        {
-            s2 += S[t]*f[t];
-        }
+        for(int i=1; i<N-1; i++) potential[i] = 0.5*(potential[i+1]+potential[i-1]+pow(h,2)*S[i]);
+        for(int j=1; j<N; j++) s1 += pow(potential[j]-potential[j-1], 2);
+        for(int t=1; t<N-1; t++) s2 += S[t]*potential[t];
+
         E[k] = s1/(2*h)-h*s2;
     }
 
@@ -110,9 +102,9 @@ int main()
     {
         switch(i)
         {
-            case N-1: field[i] = -(f[i]-f[i-1])/h;
-            case 0: field[i] = -(f[i+1]-f[i])/h;
-            default: field[i] = -(f[i+1]-f[i-1])/(2*h);
+            case N-1: field[i] = -(potential[i]-potential[i-1])/h; break;
+            case 0: field[i] = -(potential[i+1]-potential[i])/h; break;
+            default: field[i] = -(potential[i+1]-potential[i-1])/(2*h); break;
         }
     }
 
@@ -129,9 +121,9 @@ int main()
     energy.close();
 
     ofstream pot{"data/potential_1d.dat"};
-    for(int i=0; i<f.size(); i++)
+    for(int i=0; i<potential.size(); i++)
     {
-        pot << f[i] << endl;
+        pot << potential[i] << endl;
     }
     pot.close();
 
