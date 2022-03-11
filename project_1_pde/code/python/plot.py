@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import os
 import sys
 sys.path.insert(0,'../../../')
-from universal_code.src.python.saveFig import saveFig
+from universal_code.python.saveFig import saveFig
 
 def main():
     # 1D Case
