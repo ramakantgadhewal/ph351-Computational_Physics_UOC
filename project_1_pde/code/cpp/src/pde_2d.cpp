@@ -7,11 +7,11 @@
 int main()
 {
     // Initialize Grid Variables
-    const int reps = 1000;
+    const int reps = 10000;
     constexpr double xmin{-4*M_PI}, xmax{4*M_PI};
     constexpr double ymin{-4*M_PI}, ymax{4*M_PI};
-    constexpr int N = 100;
-    constexpr int M = 100;
+    constexpr int N = 120;
+    constexpr int M = 120;
     constexpr double h = (xmax-xmin)/N;
     functools::Matrix<double> field_x = functools::zeros_2d<double>(N, M);
     functools::Matrix<double> field_y = functools::zeros_2d<double>(N, M);
@@ -88,7 +88,7 @@ int main()
     {
         for(int j=0; j<M; j++)
         {
-            if(i=N-1) field_x[field_x.Index(i,j)] = -(phi[phi.Index(i,j)]-phi[phi.Index(i-1,j)])/h;
+            if(i==N-1) field_x[field_x.Index(i,j)] = -(phi[phi.Index(i,j)]-phi[phi.Index(i-1,j)])/h;
             else if(i==0) field_x[field_x.Index(i,j)] = -(phi[phi.Index(i+1,j)]-phi[phi.Index(i,j)])/h;
             else field_x[field_x.Index(i,j)] = -(phi[phi.Index(i+1,j)]-phi[phi.Index(i-1,j)])/(2*h);
         }
@@ -99,7 +99,7 @@ int main()
         for(int j=0; j<M; j++)
         {
             if(j==M-1) field_y[field_y.Index(i,j)] = -(phi[phi.Index(i,j)]-phi[phi.Index(i,j-1)])/h;
-            else if(j==0) field_y[field_y.Index(i,j)] = -(phi[phi.Index(i,j+1)]-phi[phi.Index(i,j)])/h;
+            else if(i==0) field_y[field_y.Index(i,j)] = -(phi[phi.Index(i,j+1)]-phi[phi.Index(i,j)])/h;
             else field_y[field_y.Index(i,j)] = -(phi[phi.Index(i,j+1)]-phi[phi.Index(i,j-1)])/(2*h);
         }
     }
