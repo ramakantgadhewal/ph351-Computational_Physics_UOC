@@ -5,6 +5,8 @@ import sys
 sys.path.insert(0,'../')
 from universal_code.python.saveFig import saveFig
 
+CMAP = 'plasma'
+
 def _plot(D):
     data_path = f"data_{D}d/"
     energy = np.loadtxt(data_path+f"energy_data_{D}d.dat")
@@ -54,7 +56,7 @@ def _plot(D):
         saveFig(fig_id="energy_2d_plot", destination="data_2d/")
         
         fig2, ax2 = plt.subplots()
-        plot2 = ax2.pcolormesh(fieldx)
+        plot2 = ax2.pcolormesh(fieldx, cmap=CMAP)
         ax2.set_xlabel("x")
         ax2.set_ylabel("y")
         ax2.set_title("ELectric Field - x component")
@@ -62,7 +64,7 @@ def _plot(D):
         saveFig(fig_id="fieldx_2d_plot", destination="data_2d/")
         
         fig3, ax3 = plt.subplots()
-        plot3 = ax3.pcolormesh(fieldy)
+        plot3 = ax3.pcolormesh(fieldy, cmap=CMAP)
         ax3.set_xlabel("x")
         ax3.set_ylabel("y")
         ax3.set_title("ELectric Field - y component")
@@ -70,7 +72,7 @@ def _plot(D):
         saveFig(fig_id="fieldy_2d_plot", destination="data_2d/")
         
         fig4, ax4 = plt.subplots()
-        plot4 = ax4.pcolormesh(potential)
+        plot4 = ax4.pcolormesh(potential, cmap=CMAP)
         ax4.set_xlabel("x")
         ax4.set_ylabel("y")
         ax4.set_title("Potential Energy of the system")
@@ -78,12 +80,24 @@ def _plot(D):
         saveFig(fig_id="potential_2d_plot", destination="data_2d/")
         
         fig5, ax5 = plt.subplots()
-        plot5 = ax5.pcolormesh(source)
+        plot5 = ax5.pcolormesh(source, cmap=CMAP)
         ax5.set_xlabel("x")
         ax5.set_ylabel("y")
         ax5.set_title("Source Field of the system")
         fig5.colorbar(plot5)
         saveFig(fig_id="source_2d_plot", destination="data_2d/")
+        
+        fig6, ax6 = plt.subplots()
+        x = np.linspace(-5, 5, 119)
+        y = np.linspace(-5, 5, 119)
+        color = 2 * np.log(np.hypot(fieldx, fieldy))
+        plot6 = ax6.streamplot(x, y, fieldx, fieldy, color=color, cmap=CMAP,\
+            linewidth=2, density=3, arrowstyle='->', arrowsize=1.5)
+        ax6.set_xlabel("x")
+        ax6.set_ylabel("y")
+        cbar = fig6.colorbar(plot6.lines, ax=ax6)
+        ax6.set_title("Streamlines of the Electric Field")
+        saveFig(fig_id="field_streamplot", destination="data_2d/")
 
 def main():
     # 1D Case
