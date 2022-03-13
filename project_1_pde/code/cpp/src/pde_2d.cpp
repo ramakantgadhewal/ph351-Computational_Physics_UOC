@@ -55,6 +55,7 @@ int main()
     {
         s1=0;
         s2=0;
+        
         for(int i=1; i<N-1; i++)
         {
             for(int j=1; j<M-1; j++)
@@ -66,6 +67,7 @@ int main()
                 helper_j = j;
             }
         }
+
         for(int w=1; w<N; w++)
         {
             for(int l=1; l<M; l++)
@@ -74,6 +76,7 @@ int main()
                     +std::pow((phi[phi.Index(w,l)]-phi[phi.Index(w,l-1)]),2);
             }
         }
+
         for(int t=1; t<N-1; t++)
         {
             for(int r=1; r<M-1; r++)
@@ -81,6 +84,7 @@ int main()
                 s2 += phi[phi.Index(t,r)]*S[S.Index(helper_i,helper_j)];
             }
         }
+
         E[k]=0.5*s1-std::pow(h,2)*s2;
     }
 
