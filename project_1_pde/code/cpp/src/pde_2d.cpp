@@ -7,9 +7,9 @@
 int main()
 {
     // Initialize Grid Variables
-    const int reps = 10000;
-    constexpr double xmin{-4*M_PI}, xmax{4*M_PI};
-    constexpr double ymin{-4*M_PI}, ymax{4*M_PI};
+    const int reps = 2000;
+    constexpr double xmin{-5}, xmax{5};
+    constexpr double ymin{-5}, ymax{5};
     constexpr int N = 120;
     constexpr int M = 120;
     constexpr double h = (xmax-xmin)/N;
@@ -28,7 +28,7 @@ int main()
     {
         for(int j=0; j<M; j++)
         {
-            S[S.Index(i,j)] = std::pow(std::sin(x[i]),2)+std::pow(std::sin(y[j]),2);
+            S[S.Index(i,j)] = std::sin(std::pow(x[i],2)+std::pow(y[j],2));
         }
     }
 
@@ -37,11 +37,10 @@ int main()
     {
         for(int j=0; j<phi.NumRows(); j++)
         {
-            if(i==0) phi[phi.Index(i,j)] = -10;
-            else if(i==phi.NumColumns()-1) phi[phi.Index(i,j)] = 10;
+            if(i==0) phi[phi.Index(i,j)] = 0;
+            else if(i==phi.NumColumns()-1) phi[phi.Index(i,j)] = 0;
             else if(j==0) phi[phi.Index(i,j)] = 0;
             else if(j==phi.NumRows()-1) phi[phi.Index(i,j)] = 0;
-            else phi[phi.Index(i,j)] *= -4;
         }
     }
 
@@ -93,20 +92,27 @@ int main()
         for(int j=0; j<M; j++)
         {
             if(i==N-1) field_x[field_x.Index(i,j)] = -(phi[phi.Index(i,j)]-phi[phi.Index(i-1,j)])/h;
-            else if(i==0) field_x[field_x.Index(i,j)] = -(phi[phi.Index(i+1,j)]-phi[phi.Index(i,j)])/h;
+            else if(i==0)
+            {
+                field_x[field_x.Index(i,j)] = -(phi[phi.Index(i+1,j)]-phi[phi.Index(i,j)])/h;
+                field_y[field_y.Index(i,j)] = -(phi[phi.Index(i,j+1)]-phi[phi.Index(i,j)])/h;
+            }
             else field_x[field_x.Index(i,j)] = -(phi[phi.Index(i+1,j)]-phi[phi.Index(i-1,j)])/(2*h);
-        }
-    }
 
-    for(int i=0; i<N; i++)
-    {
-        for(int j=0; j<M; j++)
-        {
             if(j==M-1) field_y[field_y.Index(i,j)] = -(phi[phi.Index(i,j)]-phi[phi.Index(i,j-1)])/h;
-            else if(i==0) field_y[field_y.Index(i,j)] = -(phi[phi.Index(i,j+1)]-phi[phi.Index(i,j)])/h;
             else field_y[field_y.Index(i,j)] = -(phi[phi.Index(i,j+1)]-phi[phi.Index(i,j-1)])/(2*h);
         }
     }
+
+    // for(int i=0; i<N; i++)
+    // {
+    //     for(int j=0; j<M; j++)
+    //     {
+    //         if(j==M-1) field_y[field_y.Index(i,j)] = -(phi[phi.Index(i,j)]-phi[phi.Index(i,j-1)])/h;
+    //         else if(i==0) field_y[field_y.Index(i,j)] = -(phi[phi.Index(i,j+1)]-phi[phi.Index(i,j)])/h;
+    //         else field_y[field_y.Index(i,j)] = -(phi[phi.Index(i,j+1)]-phi[phi.Index(i,j-1)])/(2*h);
+    //     }
+    // }
 
     // Create data directory to save results for plotting later
     namespace fs = std::filesystem;
