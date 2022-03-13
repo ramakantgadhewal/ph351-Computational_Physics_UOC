@@ -60,23 +60,33 @@ which we can see in . The boundary conditions are, for a cartesian domain $\Omeg
 <img src="../data_2d/images/energy_2d_plot.jpg" width="500"/>
 
 <b>Figure 5 - </b> Energy of the system as a function of the timesteps. It assymptotically converges to the value 33.0973.
+</div>
 
+<div style="text-align:center">
 <img src="../data_2d/images/field_streamplot.jpg" width="500" alt="source_distribution"/>
 
 <b>Figure 6 - </b> Stream lines of the electric Field produced by the final charge distribution.
+</div>
 
+<div style="text-align:center">
 <img src="../data_2d/images/potential_2d_plot.jpg" width="500"/>
 
 <b>Figure 7 - </b> The electric potential after 10000 timesteps.
+</div>
 
+<div style="text-align:center">
 <img src="../data_2d/images/fieldx_2d_plot.jpg" width="500"/>
 
 <b>Figure 8 - </b> The x component of the electric field after 10000 timesteps.
+</div>
 
+<div style="text-align:center">
 <img src="../data_2d/images/fieldy_2d_plot.jpg" width="500"/>
 
 <b>Figure 9- </b> The x component of the electric field after 10000 timesteps.
+</div>
 
+<div style="text-align:center">
 <img src="../data_2d/images/source_2d_plot.jpg" width="500"/>
 
 <b>Figure 10 - </b> The source charge distribution.
