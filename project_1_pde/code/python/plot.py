@@ -15,7 +15,7 @@ def _plot(D):
     
     if D==1:
         field = np.loadtxt(data_path+f"field_{D}d.dat")
-        print("Energy assymptote: ", energy[-1])
+        print("Energy asymptote: ", energy[-1])
         x = np.linspace(0,1,100)
         
         _, ax1 = plt.subplots()
@@ -50,7 +50,7 @@ def _plot(D):
         fieldx = np.loadtxt(data_path+f"fieldx_{D}d.dat")
         fieldy = np.loadtxt(data_path+f"fieldy_{D}d.dat")
         
-        print("Energy assymptote: ", energy[-1])
+        print("Energy asymptote: ", energy[-1])
         _, ax1 = plt.subplots()
         ax1.plot(energy)
         ax1.set_xlabel("Steps")
