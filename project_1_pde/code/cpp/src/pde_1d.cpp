@@ -9,8 +9,8 @@ double PI = M_PI;
 int main()
 {
     // Initialize Field Variables
-    const int u = 200;
-    const int N = 50;
+    const int u = 10000;
+    const int N = 100;
     const double xmin = 0.;
     const double xmax = 1.;
     vector<double> x = functools::linspace<double>(xmin, xmax, N);
@@ -24,12 +24,12 @@ int main()
     // Initialize Source
     for(int i=0; i<S.size(); i++)
     {
-        S[i] = sin(2*PI*x[i]);
+        S[i] = 12*pow(x[i],2);
     }
 
     // Set boundary conditions
     phi[0]=0;
-    phi[N-1]=0;
+    phi.back()=0;
 
     // Iteration Variables
     double s1;
@@ -41,8 +41,15 @@ int main()
         s1 = 0;
         s2 = 0;
         for(int i=1; i<N-1; i++) phi[i] = 0.5*(phi[i+1]+phi[i-1]+pow(h,2)*S[i]);
-        for(int j=1; j<N; j++) s1 += pow(phi[j]-phi[j-1], 2);
-        for(int t=1; t<N-1; t++) s2 += S[t]*phi[t];
+
+        for(int j=1; j<N; j++) 
+        {
+            s1 += pow(phi[j]-phi[j-1], 2);
+            if(j!=N)
+            {
+                s2 += S[j]*phi[j];
+            }
+        }
 
         E[k] = s1/(2*h)-h*s2;
     }
