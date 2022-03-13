@@ -15,6 +15,8 @@ def _plot(D):
     
     if D==1:
         field = np.loadtxt(data_path+f"field_{D}d.dat")
+        print("Energy assymptote: ", energy[-1])
+        x = np.linspace(0,1,100)
         
         _, ax1 = plt.subplots()
         ax1.plot(energy, label='Numerical Solution')
@@ -25,23 +27,22 @@ def _plot(D):
         saveFig(fig_id="energy_1d_plot", destination="data_1d/")
         
         _, ax2 = plt.subplots()
-        ax2.plot(field, label='Numerical Solution')
-        ax2.set_xlabel("N")
+        ax2.plot(x, field, label='Numerical Solution')
+        ax2.set_xlabel("x")
         ax2.set_ylabel("Electric Field")
         saveFig(fig_id="field_1d_plot", destination="data_1d/")
         
         _, ax3 = plt.subplots()
-        x = np.linspace(0,1,100)
         ax3.plot(x, potential, label='Numerical Solution')
         ax3.plot(x, x*(1-x**3), '--', color='r', label='Analytical Solution')
-        ax3.set_xlabel("N")
+        ax3.set_xlabel("x")
         ax3.set_ylabel("Potential")
         ax3.legend()
         saveFig(fig_id="potential_1d_plot", destination="data_1d/")
         
         _, ax4 = plt.subplots()
-        ax4.plot(source)
-        ax4.set_xlabel("N")
+        ax4.plot(x, source)
+        ax4.set_xlabel("x")
         ax4.set_ylabel("Source")
         saveFig(fig_id="source_1d_plot", destination="data_1d/")
     
@@ -49,18 +50,17 @@ def _plot(D):
         fieldx = np.loadtxt(data_path+f"fieldx_{D}d.dat")
         fieldy = np.loadtxt(data_path+f"fieldy_{D}d.dat")
         
+        print("Energy assymptote: ", energy[-1])
         _, ax1 = plt.subplots()
         ax1.plot(energy)
         ax1.set_xlabel("Steps")
         ax1.set_ylabel("Energy")
-        ax1.set_title("Energy of the system")
         saveFig(fig_id="energy_2d_plot", destination="data_2d/")
         
         fig2, ax2 = plt.subplots()
         plot2 = ax2.pcolormesh(fieldx, cmap=CMAP)
         ax2.set_xlabel("x")
         ax2.set_ylabel("y")
-        ax2.set_title("ELectric Field - x component")
         fig2.colorbar(plot2)
         saveFig(fig_id="fieldx_2d_plot", destination="data_2d/")
         
@@ -68,7 +68,6 @@ def _plot(D):
         plot3 = ax3.pcolormesh(fieldy, cmap=CMAP)
         ax3.set_xlabel("x")
         ax3.set_ylabel("y")
-        ax3.set_title("ELectric Field - y component")
         fig3.colorbar(plot3)
         saveFig(fig_id="fieldy_2d_plot", destination="data_2d/")
         
@@ -76,7 +75,6 @@ def _plot(D):
         plot4 = ax4.pcolormesh(potential, cmap=CMAP)
         ax4.set_xlabel("x")
         ax4.set_ylabel("y")
-        ax4.set_title("Potential Energy of the system")
         fig4.colorbar(plot4)
         saveFig(fig_id="potential_2d_plot", destination="data_2d/")
         
@@ -84,7 +82,6 @@ def _plot(D):
         plot5 = ax5.pcolormesh(source, cmap=CMAP)
         ax5.set_xlabel("x")
         ax5.set_ylabel("y")
-        ax5.set_title("Source Field of the system")
         fig5.colorbar(plot5)
         saveFig(fig_id="source_2d_plot", destination="data_2d/")
         
@@ -97,7 +94,6 @@ def _plot(D):
         ax6.set_xlabel("x")
         ax6.set_ylabel("y")
         cbar = fig6.colorbar(plot6.lines, ax=ax6)
-        ax6.set_title("Streamlines of the Electric Field")
         saveFig(fig_id="field_streamplot", destination="data_2d/")
 
 def main():
