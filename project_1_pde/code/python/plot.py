@@ -57,7 +57,7 @@ def _plot(D):
         plot2 = ax2.pcolormesh(fieldx)
         ax2.set_xlabel("x")
         ax2.set_ylabel("y")
-        ax2.set_title("ELectric Field - x component of the system")
+        ax2.set_title("ELectric Field - x component")
         fig2.colorbar(plot2)
         saveFig(fig_id="fieldx_2d_plot", destination="data_2d/")
         
@@ -65,7 +65,7 @@ def _plot(D):
         plot3 = ax3.pcolormesh(fieldy)
         ax3.set_xlabel("x")
         ax3.set_ylabel("y")
-        ax3.set_title("ELectric Field - y component of the system")
+        ax3.set_title("ELectric Field - y component")
         fig3.colorbar(plot3)
         saveFig(fig_id="fieldy_2d_plot", destination="data_2d/")
         
