@@ -1,6 +1,6 @@
 #include "ed.hpp"
 
-namespace Hamiltonian
+namespace Quantum
 {
 
 template <class T>
