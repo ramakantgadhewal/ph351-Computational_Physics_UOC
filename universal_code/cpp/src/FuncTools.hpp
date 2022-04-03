@@ -40,35 +40,36 @@ std::vector<T> ones_1d(int n)
 template <class T>
 class Matrix
 {
-    public:
-        Matrix( int rows, int cols, const T& initVal = T() );
+public:
+    Matrix( int rows, int cols, const T& initVal = T() );
 
-        // Size and structure
-        int NumRows() const                       { return m_rows; }
-        int NumColumns() const                    { return m_cols; }
-        int NumElements() const                   { return m_data.size(); }
+    // Size and structure
+    int NumRows() const                       { return m_rows; }
+    int NumColumns() const                    { return m_cols; }
+    int NumElements() const                   { return m_data.size(); }
 
-        // Direct vector access and indexing
-        operator const std::vector<T>& () const        { return m_data; }
-        int Index( int row, int col ) const       { return row * m_cols + col; }
+    // Direct vector access and indexing
+    operator const std::vector<T>& () const   { return m_data; }
+    int Index( int row, int col ) const       { return row * m_cols + col; }
+    Matrix<T> transpose() const;
 
-        // Get a single value
-              T & Value( int row, int col )       { return m_data[Index(row,col)]; }
-        const T & Value( int row, int col ) const { return m_data[Index(row,col)]; }
-              T & operator[]( size_t idx )        { return m_data[idx]; }
-        const T & operator[]( size_t idx ) const  { return m_data[idx]; }
+    // Get a single value
+          T & Value( int row, int col )       { return m_data[Index(row,col)]; }
+    const T & Value( int row, int col ) const { return m_data[Index(row,col)]; }
+          T & operator[]( size_t idx )        { return m_data[idx]; }
+    const T & operator[]( size_t idx ) const  { return m_data[idx]; }
 
-        // Simple row or column slices
-        std::vector<T> Row( int row, int colBegin = 0, int colEnd = -1 ) const;
-        std::vector<T> Column( int row, int colBegin = 0, int colEnd = -1 ) const;
+    // Simple row or column slices
+    std::vector<T> Row( int row, int colBegin = 0, int colEnd = -1 ) const;
+    std::vector<T> Column( int row, int colBegin = 0, int colEnd = -1 ) const;
 
-    private:
-        std::vector<T> StridedSlice( int start, int length, int stride ) const;
+private:
+    std::vector<T> StridedSlice( int start, int length, int stride ) const;
 
-        int m_rows;
-        int m_cols;
+    int m_rows;
+    int m_cols;
 
-        std::vector<T> m_data;
+    std::vector<T> m_data;
 };
 
 template <class T>
@@ -90,6 +91,20 @@ Matrix<T>::Matrix( int rows, int cols, const T& initVal )
     , m_rows( rows )
     , m_cols( cols )
 {    
+};
+
+template<class T>
+Matrix<T> Matrix<T>::transpose() const
+{
+    Matrix temp = Matrix<T>(m_rows, m_cols);
+    for(int i=0; i<temp.NumColumns(); i++)
+    {
+        for(int j=0; j<temp.NumRows(); j++)
+        {
+            temp[temp.Index(i,j)] = Matrix::Value(j,i);
+        }
+    }
+    return temp;
 };
 
 template <class T>
