@@ -6,6 +6,7 @@
 # include <cmath>
 # include <ctime>
 # include <cstring>
+#include "Eigen/Eigenvalues"
 
 // EISPACK - CODE: JOHN BURCKARDT
 double pythag ( double a, double b );
@@ -16,4 +17,4 @@ double r8_sign ( double x );
 int tql2 ( int n, double d[], double e[], double z[] );
 void tred2 ( int n, double a[], double d[], double e[], double z[] );
 
-// HAMILTONIAN - CODE: JASON ANDRONIS
+// QUANTUM - CODE: JASON ANDRONIS

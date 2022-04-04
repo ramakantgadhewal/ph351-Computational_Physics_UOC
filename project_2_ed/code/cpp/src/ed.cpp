@@ -1,99 +1,99 @@
 #include "ed.hpp"
 #include <filesystem>
 #include <fstream>
-#include <array>
 
 int main()
 {
     // Declare and initialize problem variables
-    const int size = 5, sites = 10;
-    const int time = 100;
+    const int sites = 10, time = 100;
+    const double hopping = 1;
 
-    double a[size*size]{
-        1,0,0,0,0,
-        0,2,0,0,1,
-        0,0,1,3,2,
-        0,0,3,1,0,
-        0,1,2,0,1
-    };
+    std::vector<double> x = functools::linspace<double>(0,sites,sites);
+
+    // Hamiltonian, Kinetic Energy, Potential Energy
+    double H[sites*sites], K[sites*sites], V[sites*sites];
+    int index;
+    double norm = 0;
+
     // create array for orthogonal transformation matrix
-    double z[size*size];
+    double z[sites*sites];
     // create array for diagonal elements
-    double d[size];
+    double d[sites];
     // create array for subdiagonal elements
-    double e[size-1];
+    double e[sites-1];
     e[0] = 1;
     // initial probability amplidute
-    double c[size];
+    double c[sites];
+
+    for(int i=0; i<sites; i++)
+    {
+        norm += std::exp(-2*std::pow(x[i],2));
+        for(int j=0; j<sites; j++)
+        {
+            index = i+j*sites;
+            K[index] = 0;
+            V[index] = 0;
+            if(i==j) V[index] = 0.5*std::pow(x[i],2);
+            if(i==j+1) K[index] = -hopping;
+            else if(j==i+1) K[index] = -hopping;
+            else if(i==j-1) K[index] = -hopping;
+            else if(j==i-1) K[index] = -hopping;
+            H[index] = V[index]+K[index];
+            std::cout << H[index] << " ";
+        }
+        std::cout << "\n";
+        c[i] = std::exp(-std::pow(x[i],2))/std::sqrt(norm);
+    }
 
     /* 
     tred2 will convert:
-        d -> diagonal elements of a
-        e -> subdiagonal elements of a
+        d -> diagonal elements of H
+        e -> subdiagonal elements of H
         z -> orthogonal transformation matrix
     */
-    tred2(size, a, d, e, z);
+    tred2(sites, H, d, e, z);
 
     // construct the tridiagonal matrix
-    double a2[size*size];
-    for(int i=0; i<size; i++)
+    double a2[sites*sites];
+    for(int i=0; i<sites; i++)
     {
-        for(int j=0; j<size; j++)
+        for(int j=0; j<sites; j++)
         {
-            if(i==j) 
-            { 
-                a2[i*size+j] = d[i];
-            }
-            else if(j==i-1)
-            {
-                a2[i*size+j] = e[i];
-            }
-            else if(j==i+1)
-            {
-                a2[i*size+j] = e[j];
-            }
-            else a2[i*size+j] = 0;
+            index = i+j*sites;
+            if(i==j) a2[index] = d[i];
+            else if(j==i-1) a2[index] = e[i];
+            else if(j==i+1) a2[index] = e[j];
+            else a2[index] = 0;
         }
     }
 
     /* 
     tql2 will convert (assuming ierr==0):
-        d -> eigenvalues of a
+        d -> eigenvalues of H
         e -> destroyed
-        z -> eigenvectors of a
+        z -> eigenvectors of H
     */
-    int ierr = tql2(size, d, e, z);
+    int ierr = tql2(sites, d, e, z);
 
     double yr[sites*time];
-    double *yi = yr;
+    double yi[sites*time];
 
-    for(int k=0; k<sites; k++)
+    for(int t=0; t<time; t++)
     {
-        for(int t=0; t<time; t++)
+        for(int k=0; k<sites; k++)
         {
-            for(int i=0; i<size; i++)
+            for(int i=0; i<sites; i++)
             {
-                for(int m=0; m<size; m++)
+                for(int m=0; m<sites; m++)
                 {
-                    yr[k*sites+t] += c[i]*z[i*size+m]*z[k*size+m]*std::cos(d[m]*t);
-                    yi[k*sites+t] -= c[i]*z[i*size+m]*z[k*size+m]*std::sin(d[m]*t);
+                    yr[k+t*time] += c[i]*z[i+m*sites]*z[k+m*sites]*std::cos(d[m]*t);
+                    yi[k+t*time] -= c[i]*z[i+m*sites]*z[k+m*sites]*std::sin(d[m]*t);
                 }
             }
         }
     }
 
-    std::array<double, sites*time> temp1;
-    std::array<double, sites*time> temp2;
-
-    for(int m=0; m<sites*time; m++)
-    {
-        temp1[m] = yr[m];
-        temp2[m] = yi[m];
-    }
-
-    if(temp1==temp2){
-        std::cout << "Real and Imaginary parts are Equal.\n";
-    }
+    std::cout << std::endl;
 
     namespace fs = std::filesystem;
     fs::path p=fs::current_path();
@@ -104,7 +104,7 @@ int main()
     {
         for(int t=0; t<time; t++)
         {
-            YR << yr[k*sites+t] << " ";
+            YR << yr[k+t*time] << " ";
         }
         YR << "\n";
     }
@@ -115,7 +115,7 @@ int main()
     {
         for(int t=0; t<time; t++)
         {
-            YI << yi[k*sites+t] << " ";
+            YI << yi[k+t*time] << " ";
         }
         YI << "\n";
     }
