@@ -7,7 +7,7 @@ from universal_code.python.saveFig import saveFig
 
 CMAP = 'plasma'
 MAXT = 100
-N = 10
+N = 100
 
 def plot():
     data_path = f"data/"
@@ -15,7 +15,7 @@ def plot():
     yimaginary = np.loadtxt(data_path+f"YI.dat")
     
     probability = np.abs(yreal)**2+np.abs(yimaginary)**2
-    X, T = np.meshgrid(np.linspace(0,N,N), range(MAXT), indexing='ij')
+    X, T = np.meshgrid(np.linspace(-1,1,N), range(MAXT), indexing='ij')
     
     fig1, ax1 = plt.subplots(figsize=(12,8))
     plot1 = ax1.pcolormesh(T, X, probability, cmap=CMAP, label='Numerical Solution')
