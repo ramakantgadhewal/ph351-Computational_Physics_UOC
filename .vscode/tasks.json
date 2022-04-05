@@ -42,6 +42,27 @@
 			],
 			"group": "build",
 			"detail": "compiler: /usr/bin/g++"
+		},
+		{
+			"type": "cppbuild",
+			"label": "C/C++: g++ build source WINDOWS",
+			"command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+			"args": [
+				"-std=c++17",
+				"-fdiagnostics-color=always",
+				"${fileDirname}\\**.cpp",
+				"-g",
+				"-o",
+				"..\\obj\\${fileBasenameNoExtension}_win.exe"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: C:\\msys64\\mingw64\\bin\\g++.exe"
 		}
 	]
 }
