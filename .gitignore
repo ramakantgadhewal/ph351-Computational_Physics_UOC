@@ -1,6 +1,9 @@
 # Ignore .vscode stuff
 # .vscode/*
 
+# Ignore vs stuff
+.vs/*
+
 # Ignore Data Files
 data/*
 project_*_*/code/data/*
