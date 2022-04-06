@@ -9,12 +9,12 @@ int main()
 {
     // Declare and initialize problem variables
     const int sites = 50, time = 100;
-    const double hopping = 1;
-    const Eigen::ArrayXf x = Eigen::ArrayXf::LinSpaced(sites,-1,1);
-    Eigen::MatrixXf H(sites, sites);
-    Eigen::MatrixXf T(sites, sites);
-    Eigen::MatrixXf V(sites, sites);
-    Eigen::ArrayXf c(sites);
+    const double hopping = 4;
+    const Eigen::ArrayXd x = Eigen::ArrayXd::LinSpaced(sites,0,sites);
+    Eigen::MatrixXd H(sites, sites);
+    Eigen::MatrixXd T(sites, sites);
+    Eigen::MatrixXd V(sites, sites);
+    Eigen::ArrayXd c(sites);
 
     // Set all elements to 0
     H.setZero();
@@ -25,27 +25,31 @@ int main()
     {
         for(int j=0; j<H.cols(); j++)
         {
-            if(i==j) V(i,j) = 0.5*std::pow(x(i),2);
+            if (i == j)
+            {
+                if (i>=10 && i<=40) V(i, j) = 3;
+                else V(i,j) = 0;
+            }
             if(i==j-1) T(i,j) = -hopping;
             if(j==i-1) T(i,j) = -hopping;
             if(i==j+1) T(i,j) = -hopping;
             if(j==i+1) T(i,j) = -hopping;
             H(i,j) = T(i,j)+V(i,j);
-            c(i) = std::exp(-std::pow(x(i), 2));
         }
+        c(i) = std::exp(-0.04*std::pow(x(i)-25,2));
     }
     
     // Normalize initial coefficients
     c.matrix().normalize();
 
     // Derive eigenvectors and eigenvalues from Hamiltonian
-    Eigen::EigenSolver<Eigen::MatrixXf> es(H);
-    Eigen::MatrixXf eigvecs = es.eigenvectors().real();
-    Eigen::VectorXf eigvals = es.eigenvalues().real();
+    Eigen::EigenSolver<Eigen::MatrixXd> es(H);
+    Eigen::MatrixXd eigvecs = es.eigenvectors().real();
+    Eigen::VectorXd eigvals = es.eigenvalues().real();
 
-    Eigen::ArrayXXf yr(sites, time);
-    Eigen::ArrayXXf yi(sites, time);
-    float sum_mr{0}, sum_mi{0};
+    Eigen::ArrayXXd yr(sites, time);
+    Eigen::ArrayXXd yi(sites, time);
+    double sum_mr{0}, sum_mi{0};
 
     for (int k = 0; k < sites; k++)
     {
@@ -57,7 +61,7 @@ int main()
             {
                 for (int m = 0; m < eigvecs.rows(); m++)
                 {
-                    float temp = eigvals(m) * t;
+                    double temp = eigvals(m) * t;
                     sum_mr += c(i) * eigvecs(i, m) * eigvecs(k, m) * std::cos(temp);
                     sum_mi += c(i) * eigvecs(i, m) * eigvecs(k, m) * std::sin(temp);
                 }
@@ -67,21 +71,21 @@ int main()
         }
     }
 
-    Eigen::ArrayXXf P = yr.abs().pow(2) + yi.abs().pow(2);
+    Eigen::ArrayXXd P = yr.abs().pow(2) + yi.abs().pow(2);
 
     // Arrays with _ in front are helper arrays
-    Eigen::ArrayXXf _mean_x(sites, time);
+    Eigen::ArrayXXd _mean_x(sites, time);
     // Column wise operation, multiply every column with x
     _mean_x = P.colwise() * x;
     // every element of mean_x is the mean value of x at a specific timestep
-    Eigen::ArrayXf mean_x = _mean_x.colwise().sum();
+    Eigen::ArrayXd mean_x = _mean_x.colwise().sum();
 
     // same goes here
-    Eigen::ArrayXXf _mean_x_squared(sites, time);
+    Eigen::ArrayXXd _mean_x_squared(sites, time);
     _mean_x_squared = P.colwise() * x.array().pow(2);
-    Eigen::ArrayXf mean_x_squared = _mean_x_squared.colwise().sum();
+    Eigen::ArrayXd mean_x_squared = _mean_x_squared.colwise().sum();
 
-    Eigen::ArrayXf variance = mean_x_squared - (mean_x * mean_x);
+    Eigen::ArrayXd variance = mean_x_squared - (mean_x * mean_x);
 
     /*-----------------------------------------------------------------------------------*/
 
