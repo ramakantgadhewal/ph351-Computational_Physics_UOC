@@ -1,9 +1,10 @@
 # Computational Physics: Solving the Poisson Equation in 1D & 2D
+<div align="right">Iasonas Andronis - ph4783 (UOC Department of Physics) </div>
+<br></br>
 
 ## Introduction
 
 The [poisson equation](https://en.wikipedia.org/wiki/Poisson%27s_equation) is a famous PDE that is used to derive solutions to various physical problems. One such problem is deriving the charge potential and electric field of a system, given some initial and boundary conditions and a source charge distribution. All of the units of the variables of the problems presented below are dimensionless.
-<br></br>
 
 ## 1D Problem
 
