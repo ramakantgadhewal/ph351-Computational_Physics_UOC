@@ -8,25 +8,25 @@
             "name": "(Windows) Launch",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${fileDirname}/../obj/${fileBasenameNoExtension}_win.exe",
+            "program": "${fileDirname}\\..\\obj\\${fileBasenameNoExtension}_win.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
             "console": "externalTerminal"
         },
-    {
-        "name": "clang++ - Build and debug active file",
-        "type": "cppdbg",
-        "request": "launch",
-        "program": "${fileDirname}/../obj/${fileBasenameNoExtension}_osx.out",
-        "args": [],
-        "stopAtEntry": false,
-        "cwd": "${fileDirname}",
-        "environment": [],
-        "externalConsole": false,
-        "MIMode": "lldb",
-        "preLaunchTask": "C/C++: g++ build source"
-    }
+        {
+            "name": "clang++ - Build and debug active file",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/../obj/${fileBasenameNoExtension}_osx.out",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "C/C++: g++ build source"
+        }
     ]
 }
