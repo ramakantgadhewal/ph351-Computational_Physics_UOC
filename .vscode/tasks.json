@@ -11,7 +11,7 @@
 				"${file}",
 				"-g",
 				"-o",
-				"../obj/${fileBasenameNoExtension}_osx"
+				"../obj/${fileBasenameNoExtension}.out"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
@@ -32,7 +32,7 @@
 				"${fileDirname}/**.cpp",
 				"-g",
 				"-o",
-				"../obj/${fileBasenameNoExtension}_osx.out"
+				"../obj/${fileBasenameNoExtension}.out"
 			],
 			"options": {
 				"cwd": "${fileDirname}"

@@ -4,6 +4,9 @@
 # Ignore vs stuff
 .vs/*
 
+# ignore eigen
+project_*_*/code/cpp/src/Eigen
+
 # Ignore Data Files
 data/*
 project_*_*/code/data/*
