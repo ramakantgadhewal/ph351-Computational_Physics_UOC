@@ -81,6 +81,8 @@
         "cinttypes": "cpp",
         "__tree": "cpp",
         "codecvt": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "list": "cpp",
+        "set": "cpp"
     }
 }
