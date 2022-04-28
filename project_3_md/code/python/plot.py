@@ -11,14 +11,21 @@ N = 50
 
 def plot():
     data_path = f"data/"
-    pos = np.loadtxt(data_path+f'position.dat').T
-    x = np.arange(0, pos.shape[0])
+    pos = np.loadtxt(data_path+f"position.dat").T
+    k = np.loadtxt(data_path+f"kinetic.dat")
+    u = np.loadtxt(data_path+f"potential.dat")
+    x = np.linspace(0, 100, pos.shape[0])
     m = pos.mean(axis=1)
-    ci = 1.95 * np.std(pos)/np.sqrt(len(pos))
+    ci = 1.95 * np.std(pos)/np.sqrt(len(x))
 
-    fig, ax = plt.subplots()
-    ax.plot(x, m)
-    ax.fill_between(x, (m - ci), (m + ci), color='b', alpha=.1)
+    fig1, ax1 = plt.subplots()
+    ax1.plot(x, m)
+    ax1.fill_between(x, (m - ci), (m + ci), color='b', alpha=.1)
+    plt.show()
+
+    fig2, ax2 = plt.subplots()
+    ax2.plot(x, k)
+    ax2.plot(x, u)
     plt.show()
     
 def main():

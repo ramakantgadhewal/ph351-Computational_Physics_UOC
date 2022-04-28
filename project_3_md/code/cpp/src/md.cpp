@@ -3,10 +3,15 @@
 int main()
 {
 	// Set Initial Values
-	md::v_init << 5,1,5,6,2;
-	md::q_init << 3,4,1,5,2;
+	md::v_init = Eigen::ArrayXf::Random(md::N);
+	md::q_init = Eigen::ArrayXf::Zero(md::N);
+	md::masses = Eigen::ArrayXf::Ones(md::N);
 
 	auto [pos, vel, accel] = md::system(md::q_init, md::v_init);
+	Eigen::ArrayXf U = md::potentialEnergy(md::masses, pos);
+    Eigen::ArrayXf K = md::kineticEnergy(md::masses, vel);
+
+	/* --------------------------------------------------------- */
 
 	// Save files for plotting
     namespace fs = std::filesystem;
@@ -45,6 +50,20 @@ int main()
         acceleration << "\n";
     }
     acceleration.close();
+
+    std::ofstream kinetic{ "data/kinetic.dat" };
+    for(size_t t=0; t < md::steps; t++)
+    {
+        kinetic << K(t) << std::endl;
+    }
+    kinetic.close();
+
+    std::ofstream potential{ "data/potential.dat" };
+    for(size_t t=0; t < md::steps; t++)
+    {
+        potential << U(t) << std::endl;
+    }
+    potential.close();
 
 	return 0;
 }
