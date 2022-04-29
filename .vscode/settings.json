@@ -83,6 +83,7 @@
         "codecvt": "cpp",
         "map": "cpp",
         "list": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "filesystem": "cpp"
     }
 }

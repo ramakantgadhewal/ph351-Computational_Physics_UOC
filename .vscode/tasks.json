@@ -53,7 +53,28 @@
 				"${fileDirname}\\**.cpp",
 				"-g",
 				"-o",
-				"..\\obj\\${fileBasenameNoExtension}_win.exe"
+				"..\\obj\\${fileBasenameNoExtension}.exe"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: C:\\msys64\\mingw64\\bin\\g++.exe"
+		},
+		{
+			"type": "cppbuild",
+			"label": "C/C++: g++ build source WINDOWS with Optimizations",
+			"command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+			"args": [
+				"-std=c++17",
+				"-fdiagnostics-color=always",
+				"-O2",
+				"${fileDirname}\\**.cpp",
+				"-o",
+				"..\\obj\\${fileBasenameNoExtension}.exe"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
