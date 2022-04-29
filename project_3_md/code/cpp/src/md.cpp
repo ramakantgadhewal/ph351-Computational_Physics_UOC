@@ -1,6 +1,28 @@
 #include "md.h"
 
-// Eigen::ArrayXf 
+// float totalEnergyPerParticle(float T)
+// {
+//     // Initialize Generator
+//     std::default_random_engine generator;
+
+//     // Initialize Distribution
+//     std::uniform_real_distribution<float> dist(-0.1, 0.1);
+//     auto uniform = [&] (int) {return dist(generator);}; // Lambda that returns a value from dist()
+
+// 	// Set Initial Values
+//     md::v_init = Eigen::ArrayXf::NullaryExpr(md::N, uniform);
+// 	md::q_init = Eigen::ArrayXf::Zero(md::N);
+// 	md::masses = Eigen::ArrayXf::Ones(md::N);
+
+//     auto [pos, vel, accel] = md::system(md::q_init, md::v_init);
+
+//     Eigen::ArrayXf U = md::potentialEnergy(md::masses, pos);
+//     Eigen::ArrayXf K = md::kineticEnergy(md::masses, vel);
+//     float temp_T = 2 * md::mean(K)/md::N;
+
+
+//     return energy_pp;
+// };
 
 int main()
 {
@@ -9,19 +31,23 @@ int main()
 
     // Initialize Distribution
     std::uniform_real_distribution<float> dist(-0.1, 0.1);
-
-    auto uniform = [&] (int) {return dist(generator);};
-    md::v_init = Eigen::ArrayXf::NullaryExpr(md::N, uniform);
+    auto uniform = [&] (int) {return dist(generator);}; // Lambda that returns a value from dist()
 
 	// Set Initial Values
-	// md::v_init = Eigen::ArrayXf::Random(md::N);
+    md::v_init = Eigen::ArrayXf::NullaryExpr(md::N, uniform);
 	md::q_init = Eigen::ArrayXf::Zero(md::N);
 	md::masses = Eigen::ArrayXf::Ones(md::N);
 
-	auto [pos, vel, accel] = md::system(md::q_init, md::v_init);
-	Eigen::ArrayXf U = md::potentialEnergy(md::masses, pos);
+    auto [pos, vel, accel] = md::system(md::q_init, md::v_init);
+
+    Eigen::ArrayXf U = md::potentialEnergy(md::masses, pos);
     Eigen::ArrayXf K = md::kineticEnergy(md::masses, vel);
     Eigen::ArrayXf total_energy = U + K;
+    float temp_T = 2 * md::mean(K)/md::N;
+
+    // Eigen::ArrayXf 
+
+    std::cout << temp_T << std::endl;
 
 	/* --------------------------------------------------------- */
 
