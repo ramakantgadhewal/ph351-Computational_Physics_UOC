@@ -13,6 +13,8 @@ def plot():
     k = np.loadtxt(data_path+f"kinetic.dat")
     u = np.loadtxt(data_path+f"potential.dat")
     total = np.loadtxt(data_path+f"total.dat")
+    mepp = np.loadtxt(data_path+f"mepp.dat")
+    simT = np.loadtxt(data_path+f"sim_temp.dat")
     x = np.linspace(0, 1000, pos.shape[0])
     m = vel.mean(axis=1)
     ci_pos = 1.96 * np.std(pos)/np.sqrt(len(x))
@@ -53,17 +55,9 @@ def plot():
     ax3.grid(linestyle='--', alpha=.3)
     saveFig(fig_id="total_energy_ts", destination=data_path, fig_extension="png")
 
-    # fig1, ax1 = plt.subplots()
-    # ax1.plot(x, m)
-    # ax1.fill_between(x, (m - ci_pos), (m + ci_pos), color='b', alpha=.1)
-    # plt.show()
-
-    # fig2, ax2 = plt.subplots()
-    # ax2.plot(k_roll)
-    # ax2.fill_between(len(k_roll), (k_roll - ci_k), (k_roll + ci_k), color='b', alpha=.1)
-    # ax2.plot(u_roll, color='r')
-    # ax2.fill_between(len(u_roll), (u_roll - ci_u), (u_roll + ci_u), color='r', alpha=.1)
-    # ax2.plot(total)
+    fig4, ax4 = plt.subplots()
+    ax4.scatter(simT, mepp)
+    saveFig(fig_id="temp_mepp", destination=data_path, fig_extension="png")
     
 def main():
     plot()
