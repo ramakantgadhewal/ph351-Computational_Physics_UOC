@@ -156,6 +156,7 @@ int main()
         auto [temp_T, temp_mepp] = md::mean_total_energy_pp(v_init, i, system_T);
         array_T(counter) = temp_T;
         array_mepp(counter) = temp_mepp;
+		if(counter%10==0) std::cout << counter << std::endl;
         counter++;
     }
 
@@ -219,6 +220,20 @@ int main()
         total << total_energy(t) << std::endl;
     }
     total.close();
+
+	std::ofstream mepp{ "data/mepp.dat" };
+    for(size_t i=0; i < md::t_samples; i++)
+    {
+        mepp << array_mepp(i) << std::endl;
+    }
+    mepp.close();
+
+	std::ofstream sim_temp{ "data/sim_temp.dat" };
+    for(size_t i=0; i < md::t_samples; i++)
+    {
+        sim_temp << array_T(i) << std::endl;
+    }
+    sim_temp.close();
 
 	return 0;
 };
