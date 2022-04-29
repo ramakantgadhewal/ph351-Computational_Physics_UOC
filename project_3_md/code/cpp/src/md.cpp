@@ -1,15 +1,27 @@
 #include "md.h"
 
+// Eigen::ArrayXf 
+
 int main()
 {
+    // Initialize Generator
+    std::default_random_engine generator;
+
+    // Initialize Distribution
+    std::uniform_real_distribution<float> dist(-0.1, 0.1);
+
+    auto uniform = [&] (int) {return dist(generator);};
+    md::v_init = Eigen::ArrayXf::NullaryExpr(md::N, uniform);
+
 	// Set Initial Values
-	md::v_init = Eigen::ArrayXf::Random(md::N);
+	// md::v_init = Eigen::ArrayXf::Random(md::N);
 	md::q_init = Eigen::ArrayXf::Zero(md::N);
 	md::masses = Eigen::ArrayXf::Ones(md::N);
 
 	auto [pos, vel, accel] = md::system(md::q_init, md::v_init);
 	Eigen::ArrayXf U = md::potentialEnergy(md::masses, pos);
     Eigen::ArrayXf K = md::kineticEnergy(md::masses, vel);
+    Eigen::ArrayXf total_energy = U + K;
 
 	/* --------------------------------------------------------- */
 
@@ -64,6 +76,13 @@ int main()
         potential << U(t) << std::endl;
     }
     potential.close();
+
+    std::ofstream total{ "data/total.dat" };
+    for(size_t t=0; t < md::steps; t++)
+    {
+        total << total_energy(t) << std::endl;
+    }
+    total.close();
 
 	return 0;
 }

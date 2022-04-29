@@ -5,21 +5,22 @@
 #include <filesystem>
 #include <iostream>
 #include <tuple>
+#include <random>
 
 namespace md
 {
 
 // Initialize Parameters
-const int k = 0;
+const int k = 3;
 const int b = 0;
-const int alpha = 1;
+const int alpha = 0;
 const int g = 0;
 
 const float dt = 0.1;
 const long max_time = 100;
 const long steps = (long) max_time/dt;
 
-const long N = 100;	// Number of particles
+const long N = 5;	// Number of particles
 
 Eigen::ArrayXf masses(N);	// Masses of the particles
 Eigen::ArrayXf q_init(N);	// Initial Generalized Position

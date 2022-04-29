@@ -5,15 +5,12 @@ import sys
 sys.path.insert(0,'../')
 from universal_code.python.saveFig import saveFig
 
-CMAP = 'plasma'
-MAXT = 100
-N = 50
-
 def plot():
     data_path = f"data/"
     pos = np.loadtxt(data_path+f"position.dat").T
     k = np.loadtxt(data_path+f"kinetic.dat")
     u = np.loadtxt(data_path+f"potential.dat")
+    total = np.loadtxt(data_path+f"total.dat")
     x = np.linspace(0, 100, pos.shape[0])
     m = pos.mean(axis=1)
     ci = 1.95 * np.std(pos)/np.sqrt(len(x))
@@ -24,8 +21,9 @@ def plot():
     plt.show()
 
     fig2, ax2 = plt.subplots()
-    ax2.plot(x, k)
-    ax2.plot(x, u)
+    # ax2.plot(x, k)
+    # ax2.plot(x, u)
+    ax2.plot(x, total)
     plt.show()
     
 def main():
