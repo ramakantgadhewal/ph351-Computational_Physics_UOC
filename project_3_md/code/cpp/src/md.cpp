@@ -1,3 +1,9 @@
+/* 
+
+MAKE SURE TO COMPILE USING -O2 OPTIMIZATIONS 
+
+*/
+
 #include "md.h"
 
 std::tuple<float, float> md::mean_total_energy_pp(Eigen::ArrayXf vinit, float target, float system_T)
