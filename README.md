@@ -21,7 +21,8 @@ To properly use the code in this directory follow these instructions:
 
 The repository's dependencies are listed below:
 
-* `python > 3.6`.
-* `numpy`.
-* `matplotlib`.
+* python > 3.6
+* [numpy](https://numpy.org/)
+* [matplotlib](https://matplotlib.org/)
+* [pandas](https://pandas.pydata.org/)
 * `clang++` or `g++` for compilation with `c++17` support.
