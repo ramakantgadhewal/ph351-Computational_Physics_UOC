@@ -19,12 +19,7 @@ def plot():
     m = vel.mean(axis=1)
     ci_pos = 1.96 * np.std(pos)/np.sqrt(len(x))
 
-    fig1, ax1 = plt.subplots()
-    ax1.plot(x, m)
-    ax1.fill_between(x, (m - ci_pos), (m + ci_pos), alpha=.5, color='b')
-    plt.show()
-
-    w = 500
+    w = 20
     k_roll_ts = pd.Series(k)
     k_roll_ts_mean = k_roll_ts.rolling(window=w).mean()
     ci_k = 1.96 * k_roll_ts.rolling(window=w).std()/np.sqrt(len(k_roll_ts_mean))
@@ -38,10 +33,10 @@ def plot():
     ci_t = 1.96 * t_roll_ts.rolling(window=w).std()/np.sqrt(len(t_roll_ts_mean))
 
     fig2, ax2 = plt.subplots()
-    ax2.plot(k, color='royalblue', alpha=.5, label='Kinetic Energy')
-    ax2.plot(u, color='indigo', alpha=.5, label='Potential Energy')
-    ax2.plot(k_roll_ts_mean, color='darkorange', label='Kinetic Energy Mean')
-    ax2.plot(u_roll_ts_mean, color='crimson', label='Potential Energy Mean')
+    ax2.plot(x, k, color='royalblue', alpha=.5, label='Kinetic Energy')
+    ax2.plot(x, u, color='indigo', alpha=.5, label='Potential Energy')
+    ax2.plot(x, k_roll_ts_mean, color='darkorange', label='Kinetic Energy Mean')
+    ax2.plot(x, u_roll_ts_mean, color='crimson', label='Potential Energy Mean')
     ax2.set_xlabel('t')
     ax2.set_ylabel('Energy')
     ax2.legend()
@@ -49,14 +44,18 @@ def plot():
     saveFig(fig_id="energy_ts", destination=data_path, fig_extension="png")
 
     fig3, ax3 = plt.subplots()
-    ax3.plot(total, label='Total Energy', alpha=.9)
-    ax3.plot(t_roll_ts_mean, label='Total Energy Mean')
+    ax3.plot(x, total, label='Total Energy', alpha=.9)
+    ax3.plot(x, t_roll_ts_mean, label='Total Energy Mean')
     ax3.legend()
     ax3.grid(linestyle='--', alpha=.3)
     saveFig(fig_id="total_energy_ts", destination=data_path, fig_extension="png")
 
     fig4, ax4 = plt.subplots()
-    ax4.scatter(simT, mepp)
+    ax4.scatter(simT, mepp, marker='.', label='Simulated values')
+    ax4.plot(simT, simT, linestyle='--', c='black', label='Harmonic Case')
+    ax4.set_xlabel("T")
+    ax4.set_ylabel("Mean Energy per Particle")
+    ax4.legend()
     saveFig(fig_id="temp_mepp", destination=data_path, fig_extension="png")
     
 def main():
