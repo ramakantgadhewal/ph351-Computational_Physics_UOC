@@ -143,18 +143,19 @@ int main()
     std::uniform_real_distribution<float> dist(-md::L, md::L);
     auto uniform = [&] (int) {return dist(generator);}; // Lambda that returns a value from dist()
 
-	// Set Initial Values
+	// Initial Velocity
     Eigen::ArrayXf v_init = Eigen::ArrayXf::NullaryExpr(md::N, uniform);
+	// Initial Positions are all 0 and masses 1
 
     auto [pos, vel, accel] = md::system(md::q_init, v_init);
 
     Eigen::ArrayXf U = md::potentialEnergy(md::masses, pos);
     Eigen::ArrayXf K = md::kineticEnergy(md::masses, vel);
     Eigen::ArrayXf total_energy = U + K;
-    float system_T = 2 * md::mean(K)/md::N;
+    float system_T = 2 * md::mean(K)/md::N;	// Calculate Temperature from Kinetic Energy
 
-    Eigen::ArrayXf array_T(md::t_samples);
-    Eigen::ArrayXf array_mepp(md::t_samples);
+    Eigen::ArrayXf array_T(md::t_samples);	// Array to save simulated Temperatures
+    Eigen::ArrayXf array_mepp(md::t_samples);	// Array to save simulated Mean Energies Per Particle
     
     int counter = 0;
     for(auto i: Eigen::ArrayXf::LinSpaced(md::t_samples, system_T, md::T))
