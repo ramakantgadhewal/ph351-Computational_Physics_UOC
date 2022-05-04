@@ -27,8 +27,8 @@ const int t_samples = 100;	// Number of Temperature Samples
 
 const float L = 0.1; // Range of distribution of velocities
 
-Eigen::ArrayXf q_init = Eigen::ArrayXf::Zero(N);
-Eigen::ArrayXf masses = Eigen::ArrayXf::Ones(N);
+Eigen::ArrayXf q_init = Eigen::ArrayXf::Zero(N);    // Initial Position
+Eigen::ArrayXf masses = Eigen::ArrayXf::Ones(N);    // Masses of the particles
 
 // Function Declarations
 
