@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/jasonandronis/Documents/GitHub/ph351/project_3_md/build",
+  "command": "/usr/local/bin/g++-11   -Wall -Wextra -O3 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6 -o CMakeFiles/md.dir/code/cpp/src/md.cpp.o -c /Users/jasonandronis/Documents/GitHub/ph351/project_3_md/code/cpp/src/md.cpp",
+  "file": "/Users/jasonandronis/Documents/GitHub/ph351/project_3_md/code/cpp/src/md.cpp"
+}
+]
