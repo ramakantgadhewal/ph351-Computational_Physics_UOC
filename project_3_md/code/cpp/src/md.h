@@ -45,7 +45,7 @@ std::tuple<Eigen::ArrayXXf, Eigen::ArrayXXf, Eigen::ArrayXXf> system(Eigen::Arra
 Eigen::ArrayXf kineticEnergy(Eigen::ArrayXf, Eigen::ArrayXXf);
 
 // Calculate the Potential Energy of the system for max_time
-Eigen::ArrayXf potentialEnergy(Eigen::ArrayXf, Eigen::ArrayXXf);
+Eigen::ArrayXf potentialEnergy(Eigen::ArrayXXf);
 
 // Calculate the Total Energy of the system for max_time
 std::tuple<float, float> mean_total_energy_pp(Eigen::ArrayXf, float, float);

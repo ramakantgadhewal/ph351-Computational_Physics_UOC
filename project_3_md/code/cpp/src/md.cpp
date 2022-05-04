@@ -10,7 +10,7 @@ std::tuple<float, float> md::mean_total_energy_pp(Eigen::ArrayXf vinit, float ta
 {
     Eigen::ArrayXf target_vinit = vinit * std::sqrt(target / system_T);
     auto [target_pos, target_vel, target_accel] = md::system(md::q_init, target_vinit);
-    Eigen::ArrayXf target_U = md::potentialEnergy(md::masses, target_pos);
+    Eigen::ArrayXf target_U = md::potentialEnergy(target_pos);
     Eigen::ArrayXf target_K = md::kineticEnergy(md::masses, target_vel);
     Eigen::ArrayXf target_total_energy = target_U + target_K;
     float target_T = 2 * md::mean(target_K)/md::N;
@@ -99,7 +99,7 @@ Eigen::ArrayXf md::kineticEnergy(Eigen::ArrayXf m, Eigen::ArrayXXf V)
 	return e;
 };
 
-Eigen::ArrayXf md::potentialEnergy(Eigen::ArrayXf m, Eigen::ArrayXXf Q)
+Eigen::ArrayXf md::potentialEnergy(Eigen::ArrayXXf Q)
 {
 	float sum_1, sum_2, sum_3, sum_4;
 	Eigen::ArrayXf U(steps);
@@ -149,7 +149,7 @@ int main()
 
     auto [pos, vel, accel] = md::system(md::q_init, v_init);
 
-    Eigen::ArrayXf U = md::potentialEnergy(md::masses, pos);
+    Eigen::ArrayXf U = md::potentialEnergy(pos);
     Eigen::ArrayXf K = md::kineticEnergy(md::masses, vel);
     Eigen::ArrayXf total_energy = U + K;
     float system_T = 2 * md::mean(K)/md::N;	// Calculate Temperature from Kinetic Energy
