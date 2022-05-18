@@ -4,17 +4,17 @@
 
 
 # Configuration directories and files
-SourceDirectory: /Users/jasonandronis/Documents/GitHub/ph351/project_3_md
-BuildDirectory: /Users/jasonandronis/Documents/GitHub/ph351/project_3_md/build
+SourceDirectory: C:/Users/Jason/source/repos/ph351/project_3_md
+BuildDirectory: C:/Users/Jason/source/repos/ph351/project_3_md/build
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: Jasons-MacBook-Pro.local
+Site: Keats
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
-BuildName: Darwin-g++-11
+BuildName: Win32-ninja
 
 # Subprojects
 LabelsForSubprojects: 
@@ -27,8 +27,8 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/Applications/CMake.app/Contents/bin/cmake" "/Users/jasonandronis/Documents/GitHub/ph351/project_3_md"
-MakeCommand: /Applications/CMake.app/Contents/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
+ConfigureCommand: "C:/msys64/mingw64/bin/cmake.exe" "C:/Users/Jason/source/repos/ph351/project_3_md"
+MakeCommand: C:\msys64\mingw64\bin\cmake.exe --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
 # version control
@@ -63,7 +63,7 @@ UpdateOptions:
 UpdateType: 
 
 # Compiler info
-Compiler: /usr/local/bin/g++-11
+Compiler: C:/msys64/mingw64/bin/g++.exe
 CompilerVersion: 11.2.0
 
 # Dynamic analysis (MemCheck)
@@ -81,7 +81,7 @@ MemoryCheckCommandOptions:
 MemoryCheckSuppressionFile: 
 
 # Coverage
-CoverageCommand: /usr/bin/gcov
+CoverageCommand: C:/msys64/mingw64/bin/gcov.exe
 CoverageExtraFlags: -l
 
 # Testing options

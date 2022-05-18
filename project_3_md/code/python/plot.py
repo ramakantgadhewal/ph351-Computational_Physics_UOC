@@ -7,7 +7,7 @@ sys.path.insert(0,'../')
 from universal_code.python.saveFig import saveFig
 
 def plot():
-    data_path = f"data/"
+    data_path = f"build/data/"
     pos = np.loadtxt(data_path+f"position.dat").T
     vel = np.loadtxt(data_path+f"velocity.dat").T
     k = np.loadtxt(data_path+f"kinetic.dat")
