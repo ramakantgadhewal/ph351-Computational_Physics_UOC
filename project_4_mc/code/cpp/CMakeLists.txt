@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(md VERSION 0.1.0)
+project(mc VERSION 0.0.2)
 
 include(CTest)
 enable_testing()
 
-add_executable(md code/cpp/src/md.cpp)
+add_executable(mc src/main.cpp src/mc.cpp)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
@@ -21,3 +21,4 @@ endif()
 set(CMAKE_CXX_FLAGS "-Wall -Wextra")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+set(CMAKE_CXX_FLAGS_RELEASE "-fdiagnostics-color=always")
