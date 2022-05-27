@@ -4,7 +4,7 @@ project(mc VERSION 0.0.2)
 include(CTest)
 enable_testing()
 
-add_executable(mc src/main.cpp src/mc.cpp)
+add_executable(mc src/mc.cpp)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
@@ -18,6 +18,11 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ADDITIONAL_CFLAGS} -Wall -Wextra")
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ADDITIONAL_CFLAGS} -g")
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} ${ADDITIONAL_CFLAGS} -fdiagnostics-color=always")
+if(${CMAKE_BUILD_TYPE}==Debug)
+  add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
+endif()
+
+set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+set (CMAKE_CXX_FLAGS "-g")
+set (CMAKE_CXX_FLAGS "-O3")
+set(CMAKE_CXX_FLAGS_RELEASE "-fdiagnostics-color=always")

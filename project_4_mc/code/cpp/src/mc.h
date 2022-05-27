@@ -12,25 +12,28 @@
 namespace mc
 {
 
-static const int L{16}, J{1}, B{1}, size{L*L};
+static const int L{100}, size{L*L}, time{10000};
+static const float J{1}, B{0.5}, T{1};
 
 // Spin matrix containing all the spin values of each lattice site
 inline Eigen::ArrayXXf spin;
-inline Eigen::ArrayXXf neighbouring_spins;
+
+// Total energy of the Ising Model
+float energy;
 
 // rng setup to randomly initiate spin matrix
 static std::random_device rd;
 static std::mt19937 rng(rd());
-static std::uniform_int_distribution<int> uni(-1, 1);
+static std::uniform_int_distribution<int> uni(0, 1);
+static std::uniform_int_distribution<int> big_uni(0, mc::L-1);
 
-// Hamiltonian of the Ising Model
-inline Eigen::ArrayXXf hamiltonian;
+Eigen::ArrayXXf initSpin();
 
-void initSpin();
+std::vector<float> neighbours(int, int, Eigen::ArrayXXf); 
 
-std::vector<float> neighbours(int, int); 
+void getEnergy(Eigen::ArrayXXf);
 
-void initHamiltonian();
+Eigen::ArrayXXf metropolis(Eigen::ArrayXXf);
 
 }
 
