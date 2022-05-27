@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Darwin-g++-11"
+	BuildStamp="20220526-2154-Experimental"
+	Name="keats_laptop"
+	Generator="ctest-3.23.0"
+	CompilerName="/usr/local/bin/g++-11"
+	CompilerVersion="11.2.0"
+	OSName="macOS"
+	Hostname="keats_laptop"
+	OSRelease="11.6.5"
+	OSVersion="20G527"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="69"
+	ProcessorCacheSize="32768"
+	NumberOfLogicalCPU="4"
+	NumberOfPhysicalCPU="2"
+	TotalVirtualMemory="0"
+	TotalPhysicalMemory="8192"
+	LogicalProcessorsPerPhysical="8"
+	ProcessorClockFrequency="2400"
+	>
+	<Testing>
+		<StartDateTime>May 27 00:54 EEST</StartDateTime>
+		<StartTestTime>1653602060</StartTestTime>
+		<TestList/>
+		<EndDateTime>May 27 00:54 EEST</EndDateTime>
+		<EndTestTime>1653602060</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/jasonandronis/Documents/GitHub/ph351/project_4_mc'
+make: Leaving directory `/Users/jasonandronis/Documents/GitHub/ph351/project_4_mc'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+

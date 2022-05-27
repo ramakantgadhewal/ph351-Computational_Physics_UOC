@@ -216,13 +216,13 @@ build cmake_object_order_depends_target_mc: phony || CMakeFiles/mc.dir
 
 build CMakeFiles/mc.dir/src/main.cpp.o: CXX_COMPILER__mc_Debug /Users/jasonandronis/Documents/GitHub/ph351/project_4_mc/code/cpp/src/main.cpp || cmake_object_order_depends_target_mc
   DEP_FILE = CMakeFiles/mc.dir/src/main.cpp.o.d
-  FLAGS = -Wall -Wextra -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6
+  FLAGS = -Wall -Wextra  -g -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6
   OBJECT_DIR = CMakeFiles/mc.dir
   OBJECT_FILE_DIR = CMakeFiles/mc.dir/src
 
 build CMakeFiles/mc.dir/src/mc.cpp.o: CXX_COMPILER__mc_Debug /Users/jasonandronis/Documents/GitHub/ph351/project_4_mc/code/cpp/src/mc.cpp || cmake_object_order_depends_target_mc
   DEP_FILE = CMakeFiles/mc.dir/src/mc.cpp.o.d
-  FLAGS = -Wall -Wextra -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6
+  FLAGS = -Wall -Wextra  -g -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6
   OBJECT_DIR = CMakeFiles/mc.dir
   OBJECT_FILE_DIR = CMakeFiles/mc.dir/src
 
@@ -235,7 +235,7 @@ build CMakeFiles/mc.dir/src/mc.cpp.o: CXX_COMPILER__mc_Debug /Users/jasonandroni
 # Link the executable mc
 
 build mc: CXX_EXECUTABLE_LINKER__mc_Debug CMakeFiles/mc.dir/src/main.cpp.o CMakeFiles/mc.dir/src/mc.cpp.o
-  FLAGS = -Wall -Wextra -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6
+  FLAGS = -Wall -Wextra  -g -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6
   LINK_FLAGS = -L/usr/local/opt/lapack/lib
   OBJECT_DIR = CMakeFiles/mc.dir
   POST_BUILD = :
