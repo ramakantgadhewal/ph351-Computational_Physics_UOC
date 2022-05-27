@@ -36,7 +36,7 @@ std::vector<float> mc::neighbours(int i, int j, Eigen::ArrayXXf S)
     return _tmp;
 }
 
-void mc::getEnergy(Eigen::ArrayXXf spin)
+float mc::getEnergy(Eigen::ArrayXXf spin)
 {
     float first_term{0}, second_term{0};
 
@@ -52,8 +52,8 @@ void mc::getEnergy(Eigen::ArrayXXf spin)
         }
     }
 
-    second_term = - mc::B * mc::spin.sum();
-    mc::energy = first_term + second_term;
+    second_term = - mc::B * spin.sum();
+    return first_term + second_term;
 }
 
 Eigen::ArrayXXf mc::metropolis(Eigen::ArrayXXf spin)
@@ -115,18 +115,41 @@ int main()
     }
     init_spin.close();
 
+    mc::time = 100;
     Eigen::ArrayXXf S = mc::metropolis(S_init);
-
-    std::ofstream spin{ "data/spin.dat" };
+    std::string filename("data/spin");
+    filename.append("_");
+    filename.append(std::to_string(mc::time));
+    filename.append(".dat");
+    std::ofstream spin{ filename };
     for(size_t i=0; i < mc::L; i++)
-	{
-		for(size_t j=0; j < mc::L; j++)
+    {
+        for(size_t j=0; j < mc::L; j++)
         {
             spin << S(i, j) << " ";
         }
         spin << "\n";
     }
     spin.close();
+
+    for( mc::time=200; mc::time<10000; mc::time+=100)
+    {
+        S = mc::metropolis(S);
+        std::string filename("data/spin");
+        filename.append("_");
+        filename.append(std::to_string(mc::time));
+        filename.append(".dat");
+        std::ofstream spin{ filename };
+        for(size_t i=0; i < mc::L; i++)
+        {
+            for(size_t j=0; j < mc::L; j++)
+            {
+                spin << S(i, j) << " ";
+            }
+            spin << "\n";
+        }
+        spin.close();
+    }
 
     return 0;
 }
