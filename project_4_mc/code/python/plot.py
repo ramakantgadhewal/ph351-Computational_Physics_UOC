@@ -20,7 +20,12 @@ def prepareS(s):
             else: _s[i,j] = 0
     return _s
 
-fig, ax = plt.subplots()
+E = []
+E2 = []
+M = []
+M2 = []
+C = []
+CHI = []
 for i, (subpath, l) in enumerate((zip(data_subpaths, lrange))):
     energy = glob.glob(subpath+"/energy_[!squared]*.dat")
     energy_squared = glob.glob(subpath+"/energy_*.dat")
@@ -28,15 +33,30 @@ for i, (subpath, l) in enumerate((zip(data_subpaths, lrange))):
     magnetic_moment = glob.glob(subpath+"/magnetic_moment_[!squared]*.dat")
     magnetic_moment_squared = glob.glob(subpath+"/magnetic_moment_*.dat")
     magnetic_moment_squared = list(set(magnetic_moment_squared).symmetric_difference(set(magnetic_moment)))
-    e = np.loadtxt(energy[0])
-    e2 = np.loadtxt(energy_squared[0])
-    m = np.loadtxt(magnetic_moment[0])
-    m2 = np.loadtxt(magnetic_moment_squared[0])
-    c = 1/temp[i]**2*(e2-e)
-    chi = 1/temp[i]**2*(m2-m)
-    ax.scatter(temp, e, label=f"L={l}", alpha=0.6)
-ax.legend()
-plt.show()
+    E.append(np.loadtxt(energy[0]))
+    E2.append(np.loadtxt(energy_squared[0]))
+    M.append(np.loadtxt(magnetic_moment[0]))
+    M2.append(np.loadtxt(magnetic_moment_squared[0]))
+    C.append(1/temp[i]**2*(np.loadtxt(energy_squared[0])-np.loadtxt(energy[0])))
+    CHI.append(1/temp[i]**2*(np.loadtxt(magnetic_moment_squared[0])-np.loadtxt(magnetic_moment[0])))
+    
+plots = [E, E2, M, M2, C, CHI]
+names = ["energy", "energy_squared", "magnetic_moment", "magnetic_moment_squared", "specific_heat", "chi"]
+ax_names = [r"$E/L^2$", r"$E^2/L^2$", r"$M/L^2$", r"$M^2/L^2$", r"C", r"$\chi$"]
+for p, name, ax_name in zip(plots, names, ax_names):
+    fig, ax = plt.subplots()
+    for k, l in zip(p, lrange):
+        ax.scatter(temp, k, label=f"L={l}", alpha=0.7)
+        ax.set_xlabel("T")
+        ax.set_ylabel(ax_name)
+    ax.legend()
+    PROJECT_ROOT_DIR = data_path
+    IMAGES_PATH = os.path.join(PROJECT_ROOT_DIR, "images")
+    os.makedirs(IMAGES_PATH, exist_ok=True)
+    path = os.path.join(IMAGES_PATH, name + "." + "png")
+    print("Saving figure", name)
+    plt.savefig(path, format="png", dpi=300)
+    
     # fig = plt.figure()
     # ax = fig.add_subplot()
     # s = []
