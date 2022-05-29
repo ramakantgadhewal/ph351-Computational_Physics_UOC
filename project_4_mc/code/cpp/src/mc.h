@@ -12,26 +12,29 @@
 namespace mc
 {
 
-static const int L{200}, size{L*L};
-static const float J{1}, B{0.5};
+// Monte Carlo Sweeps
+static const float N{40};
+static const float J{1}, B{0};
 
-int time;
+int time, L, size{L*L};
 
-float T{1};
+float T, mean_moment, mean_energy, mean_moment_squared, mean_energy_squared;
 
 // rng setup to randomly initiate spin matrix
 static std::random_device rd;
 static std::mt19937 rng(rd());
-static std::uniform_int_distribution<int> uni(0, 1);
-static std::uniform_int_distribution<int> big_uni(0, mc::L-1);
+// distribution that will be used during the run of the program
+std::uniform_int_distribution<int> uni(0, 1);
 
-Eigen::ArrayXXf initSpin();
+Eigen::ArrayXXi initSpin();
 
-std::vector<float> neighbours(int, int, Eigen::ArrayXXf); 
+std::vector<int> neighbours(int, int, Eigen::ArrayXXi); 
 
-float getEnergy(Eigen::ArrayXXf);
+float getEnergy(Eigen::ArrayXXi);
 
-Eigen::ArrayXXf metropolis(Eigen::ArrayXXf);
+float getMagneticMoment(Eigen::ArrayXXi);
+
+Eigen::ArrayXXi metropolis(Eigen::ArrayXXi, int);
 
 }
 
