@@ -7,25 +7,25 @@
 
 # =============================================================================
 # Project: ed
-# Configurations: Debug
+# Configurations: Release
 # =============================================================================
 # =============================================================================
 
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__ed_Debug
+rule CXX_COMPILER__ed_Release
   depfile = $DEP_FILE
   deps = gcc
-  command = /usr/local/bin/g++-11 $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = /Library/Developer/CommandLineTools/usr/bin/c++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building CXX object $out
 
 
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__ed_Debug
-  command = $PRE_LINK && /usr/local/bin/g++-11 $FLAGS -Wl,-search_paths_first -Wl,-headerpad_max_install_names $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
+rule CXX_EXECUTABLE_LINKER__ed_Release
+  command = $PRE_LINK && /Library/Developer/CommandLineTools/usr/bin/c++ $FLAGS -Wl,-search_paths_first -Wl,-headerpad_max_install_names $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
 
@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /Applications/CMake.app/Contents/bin/cmake --regenerate-during-build -S/Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/code/cpp -B/Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/build
+  command = /Applications/CMake.app/Contents/bin/cmake --regenerate-during-build -S/Users/jasonandronis/Documents/GitHub/ph351-Computational_Physics_UOC/project_2_ed/code/cpp -B/Users/jasonandronis/Documents/GitHub/ph351-Computational_Physics_UOC/project_2_ed/build
   description = Re-running CMake...
   generator = 1
 

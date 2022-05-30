@@ -1,5 +1,5 @@
-/Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/build/CMakeFiles/ed.dir
-/Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/build/CMakeFiles/package.dir
-/Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/build/CMakeFiles/package_source.dir
-/Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/build/CMakeFiles/edit_cache.dir
-/Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/build/CMakeFiles/rebuild_cache.dir
+/Users/jasonandronis/Documents/GitHub/ph351-Computational_Physics_UOC/project_2_ed/build/CMakeFiles/ed.dir
+/Users/jasonandronis/Documents/GitHub/ph351-Computational_Physics_UOC/project_2_ed/build/CMakeFiles/package.dir
+/Users/jasonandronis/Documents/GitHub/ph351-Computational_Physics_UOC/project_2_ed/build/CMakeFiles/package_source.dir
+/Users/jasonandronis/Documents/GitHub/ph351-Computational_Physics_UOC/project_2_ed/build/CMakeFiles/edit_cache.dir
+/Users/jasonandronis/Documents/GitHub/ph351-Computational_Physics_UOC/project_2_ed/build/CMakeFiles/rebuild_cache.dir

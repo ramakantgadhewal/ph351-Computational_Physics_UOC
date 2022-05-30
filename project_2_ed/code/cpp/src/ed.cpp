@@ -1,5 +1,5 @@
 #include "../../../../universal_code/cpp/src/Eigen/Core"
-#include "../../../../universal_code/cpp/src/Eigen/Eigenvalue"
+#include "../../../../universal_code/cpp/src/Eigen/Eigenvalues"
 #include <iostream>
 #include <cmath>
 #include <filesystem>

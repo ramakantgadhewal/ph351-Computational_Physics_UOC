@@ -1,3 +1,5 @@
 # ninja log v5
-0	2420	6745741965538489	CMakeFiles/md.dir/code/cpp/src/md.cpp.obj	943d827ecceb4a21
 2424	2582	6745741967068493	md.exe	a462e6c6dd69ac76
+0	2420	6745741965538489	CMakeFiles/md.dir/code/cpp/src/md.cpp.obj	943d827ecceb4a21
+5	3048	1653920583216606737	CMakeFiles/md.dir/src/md.cpp.o	19bba2dce4e4ca14
+3051	3131	1653920583310101963	md	92e69ef69837177c
