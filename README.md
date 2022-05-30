@@ -11,7 +11,7 @@ The code in all of the projects is written in a way that is very sensitive to th
 1. Navigate into the `project_*` directory.
 2. Configure CMake using the command `cmake -S code/cpp -B build -G Ninja`.
 3. If you want to compile the source, use the command `cmake --build build --config Release --target all --`, otherwise this step can be skipped since binaries are provided.
-4. To run the binaries produced use the `./build/*binary_name*` command from the `project_*` directory. A `data` directory will be produced in the directory this command is run so that is why its important to write this code from the correct directory.
+4. To run the binaries produced use the `./build/*binary_name*` command from the `project_*` directory. A `data` directory will be produced in the directory this command is run.
 5. To plot the data, after making sure the data directory is in the `project_*` directory, you can run `python code/python/plot.py` to run the plotting script that will produce an `images` directory in the data directory, which will contain figures of the data calculated by the c++ code.
 
 ## Dependencies
