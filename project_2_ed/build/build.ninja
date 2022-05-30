@@ -1,0 +1,170 @@
+## This file contains all the build statements describing the
+# compilation DAG.
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# 
+# Which is the root file.
+# =============================================================================
+
+# =============================================================================
+# Project: ed
+# Configurations: Debug
+# =============================================================================
+
+#############################################
+# Minimal version of Ninja required by this file
+
+ninja_required_version = 1.5
+
+
+#############################################
+# Set configuration variable for custom commands.
+
+CONFIGURATION = Debug
+# =============================================================================
+# Include auxiliary files.
+
+
+#############################################
+# Include rules file.
+
+include CMakeFiles/rules.ninja
+
+# =============================================================================
+
+#############################################
+# Logical path to working directory; prefix for absolute paths.
+
+cmake_ninja_workdir = /Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/build/
+# =============================================================================
+# Object build statements for EXECUTABLE target ed
+
+
+#############################################
+# Order-only phony target for ed
+
+build cmake_object_order_depends_target_ed: phony || CMakeFiles/ed.dir
+
+build CMakeFiles/ed.dir/src/ed.cpp.o: CXX_COMPILER__ed_Debug /Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/code/cpp/src/ed.cpp || cmake_object_order_depends_target_ed
+  DEP_FILE = CMakeFiles/ed.dir/src/ed.cpp.o.d
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6 -std=gnu++17
+  OBJECT_DIR = CMakeFiles/ed.dir
+  OBJECT_FILE_DIR = CMakeFiles/ed.dir/src
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target ed
+
+
+#############################################
+# Link the executable ed
+
+build ed: CXX_EXECUTABLE_LINKER__ed_Debug CMakeFiles/ed.dir/src/ed.cpp.o
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6
+  LINK_FLAGS = -L/usr/local/opt/lapack/lib
+  OBJECT_DIR = CMakeFiles/ed.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = ed
+  TARGET_PDB = ed.dbg
+
+
+#############################################
+# Utility command for package
+
+build CMakeFiles/package.util: CUSTOM_COMMAND all
+  COMMAND = cd /Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/build && /Applications/CMake.app/Contents/bin/cpack --config ./CPackConfig.cmake
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build package: phony CMakeFiles/package.util
+
+
+#############################################
+# Utility command for package_source
+
+build CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/build && /Applications/CMake.app/Contents/bin/cpack --config ./CPackSourceConfig.cmake /Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/build/CPackSourceConfig.cmake
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build package_source: phony CMakeFiles/package_source.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/build && /Applications/CMake.app/Contents/bin/ccmake -S/Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/code/cpp -B/Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/build
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build edit_cache: phony CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/build && /Applications/CMake.app/Contents/bin/cmake --regenerate-during-build -S/Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/code/cpp -B/Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/build
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build rebuild_cache: phony CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Target aliases.
+
+# =============================================================================
+# Folder targets.
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/build
+
+build all: phony ed
+
+# =============================================================================
+# Unknown Build Time Dependencies.
+# Tell Ninja that they may appear as side effects of build rules
+# otherwise ordered by order-only dependencies.
+
+# =============================================================================
+# Built-in targets
+
+
+#############################################
+# Re-run CMake if any of its inputs changed.
+
+build build.ninja: RERUN_CMAKE | /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCInformation.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CPack.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CPackComponent.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU-C.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU-CXX.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-GNU-C.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-GNU-CXX.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-GNU.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Darwin.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/UnixPaths.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Templates/CPackConfig.cmake.in /Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/code/cpp/CMakeLists.txt CMakeCache.txt CMakeFiles/3.23.0/CMakeCCompiler.cmake CMakeFiles/3.23.0/CMakeCXXCompiler.cmake CMakeFiles/3.23.0/CMakeSystem.cmake
+  pool = console
+
+
+#############################################
+# A missing CMake input file is not an error.
+
+build /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCInformation.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CPack.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CPackComponent.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU-C.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU-CXX.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-GNU-C.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-GNU-CXX.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-GNU.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Darwin.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/UnixPaths.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Templates/CPackConfig.cmake.in /Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/code/cpp/CMakeLists.txt CMakeCache.txt CMakeFiles/3.23.0/CMakeCCompiler.cmake CMakeFiles/3.23.0/CMakeCXXCompiler.cmake CMakeFiles/3.23.0/CMakeSystem.cmake: phony
+
+
+#############################################
+# Clean all the built files.
+
+build clean: CLEAN
+
+
+#############################################
+# Print all primary targets available.
+
+build help: HELP
+
+
+#############################################
+# Make the all target the default.
+
+default all
