@@ -19,7 +19,7 @@ The code in all of the projects is written in a way that is very sensitive to th
 The repository's dependencies are listed below:
 
 * python > 3.6
-* c++ >= c++17
+* C++ compiler with C++17 support
 * [numpy](https://numpy.org/)
 * [matplotlib](https://matplotlib.org/)
 * [pandas](https://pandas.pydata.org/)
