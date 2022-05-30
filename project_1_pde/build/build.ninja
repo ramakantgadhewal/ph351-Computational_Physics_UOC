@@ -1,0 +1,202 @@
+## This file contains all the build statements describing the
+# compilation DAG.
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# 
+# Which is the root file.
+# =============================================================================
+
+# =============================================================================
+# Project: pde
+# Configurations: Release
+# =============================================================================
+
+#############################################
+# Minimal version of Ninja required by this file
+
+ninja_required_version = 1.5
+
+
+#############################################
+# Set configuration variable for custom commands.
+
+CONFIGURATION = Release
+# =============================================================================
+# Include auxiliary files.
+
+
+#############################################
+# Include rules file.
+
+include CMakeFiles/rules.ninja
+
+# =============================================================================
+
+#############################################
+# Logical path to working directory; prefix for absolute paths.
+
+cmake_ninja_workdir = /Users/jasonandronis/Documents/GitHub/ph351/project_1_pde/build/
+# =============================================================================
+# Object build statements for EXECUTABLE target pde_1d
+
+
+#############################################
+# Order-only phony target for pde_1d
+
+build cmake_object_order_depends_target_pde_1d: phony || CMakeFiles/pde_1d.dir
+
+build CMakeFiles/pde_1d.dir/src/pde_1d.cpp.o: CXX_COMPILER__pde_1d_Release /Users/jasonandronis/Documents/GitHub/ph351/project_1_pde/code/cpp/src/pde_1d.cpp || cmake_object_order_depends_target_pde_1d
+  DEP_FILE = CMakeFiles/pde_1d.dir/src/pde_1d.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6 -std=gnu++17
+  OBJECT_DIR = CMakeFiles/pde_1d.dir
+  OBJECT_FILE_DIR = CMakeFiles/pde_1d.dir/src
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target pde_1d
+
+
+#############################################
+# Link the executable pde_1d
+
+build pde_1d: CXX_EXECUTABLE_LINKER__pde_1d_Release CMakeFiles/pde_1d.dir/src/pde_1d.cpp.o
+  FLAGS = -O3 -DNDEBUG -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6
+  LINK_FLAGS = -L/usr/local/opt/lapack/lib
+  OBJECT_DIR = CMakeFiles/pde_1d.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = pde_1d
+  TARGET_PDB = pde_1d.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target pde_2d
+
+
+#############################################
+# Order-only phony target for pde_2d
+
+build cmake_object_order_depends_target_pde_2d: phony || CMakeFiles/pde_2d.dir
+
+build CMakeFiles/pde_2d.dir/src/pde_2d.cpp.o: CXX_COMPILER__pde_2d_Release /Users/jasonandronis/Documents/GitHub/ph351/project_1_pde/code/cpp/src/pde_2d.cpp || cmake_object_order_depends_target_pde_2d
+  DEP_FILE = CMakeFiles/pde_2d.dir/src/pde_2d.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6 -std=gnu++17
+  OBJECT_DIR = CMakeFiles/pde_2d.dir
+  OBJECT_FILE_DIR = CMakeFiles/pde_2d.dir/src
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target pde_2d
+
+
+#############################################
+# Link the executable pde_2d
+
+build pde_2d: CXX_EXECUTABLE_LINKER__pde_2d_Release CMakeFiles/pde_2d.dir/src/pde_2d.cpp.o
+  FLAGS = -O3 -DNDEBUG -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6
+  LINK_FLAGS = -L/usr/local/opt/lapack/lib
+  OBJECT_DIR = CMakeFiles/pde_2d.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = pde_2d
+  TARGET_PDB = pde_2d.dbg
+
+
+#############################################
+# Utility command for package
+
+build CMakeFiles/package.util: CUSTOM_COMMAND all
+  COMMAND = cd /Users/jasonandronis/Documents/GitHub/ph351/project_1_pde/build && /Applications/CMake.app/Contents/bin/cpack --config ./CPackConfig.cmake
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build package: phony CMakeFiles/package.util
+
+
+#############################################
+# Utility command for package_source
+
+build CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/jasonandronis/Documents/GitHub/ph351/project_1_pde/build && /Applications/CMake.app/Contents/bin/cpack --config ./CPackSourceConfig.cmake /Users/jasonandronis/Documents/GitHub/ph351/project_1_pde/build/CPackSourceConfig.cmake
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build package_source: phony CMakeFiles/package_source.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/jasonandronis/Documents/GitHub/ph351/project_1_pde/build && /Applications/CMake.app/Contents/bin/ccmake -S/Users/jasonandronis/Documents/GitHub/ph351/project_1_pde/code/cpp -B/Users/jasonandronis/Documents/GitHub/ph351/project_1_pde/build
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build edit_cache: phony CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/jasonandronis/Documents/GitHub/ph351/project_1_pde/build && /Applications/CMake.app/Contents/bin/cmake --regenerate-during-build -S/Users/jasonandronis/Documents/GitHub/ph351/project_1_pde/code/cpp -B/Users/jasonandronis/Documents/GitHub/ph351/project_1_pde/build
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build rebuild_cache: phony CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Target aliases.
+
+# =============================================================================
+# Folder targets.
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/jasonandronis/Documents/GitHub/ph351/project_1_pde/build
+
+build all: phony pde_1d pde_2d
+
+# =============================================================================
+# Unknown Build Time Dependencies.
+# Tell Ninja that they may appear as side effects of build rules
+# otherwise ordered by order-only dependencies.
+
+# =============================================================================
+# Built-in targets
+
+
+#############################################
+# Re-run CMake if any of its inputs changed.
+
+build build.ninja: RERUN_CMAKE | /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCInformation.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CPack.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CPackComponent.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU-C.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU-CXX.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-GNU-C.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-GNU-CXX.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-GNU.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Darwin.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/UnixPaths.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Templates/CPackConfig.cmake.in /Users/jasonandronis/Documents/GitHub/ph351/project_1_pde/code/cpp/CMakeLists.txt CMakeCache.txt CMakeFiles/3.23.0/CMakeCCompiler.cmake CMakeFiles/3.23.0/CMakeCXXCompiler.cmake CMakeFiles/3.23.0/CMakeSystem.cmake
+  pool = console
+
+
+#############################################
+# A missing CMake input file is not an error.
+
+build /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCInformation.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CPack.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/CPackComponent.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU-C.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU-CXX.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-GNU-C.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-GNU-CXX.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-GNU.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Darwin.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Modules/Platform/UnixPaths.cmake /Applications/CMake.app/Contents/share/cmake-3.23/Templates/CPackConfig.cmake.in /Users/jasonandronis/Documents/GitHub/ph351/project_1_pde/code/cpp/CMakeLists.txt CMakeCache.txt CMakeFiles/3.23.0/CMakeCCompiler.cmake CMakeFiles/3.23.0/CMakeCXXCompiler.cmake CMakeFiles/3.23.0/CMakeSystem.cmake: phony
+
+
+#############################################
+# Clean all the built files.
+
+build clean: CLEAN
+
+
+#############################################
+# Print all primary targets available.
+
+build help: HELP
+
+
+#############################################
+# Make the all target the default.
+
+default all
