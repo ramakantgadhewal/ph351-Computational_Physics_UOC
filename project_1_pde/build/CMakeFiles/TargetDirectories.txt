@@ -1,6 +1,6 @@
-/Users/jasonandronis/Documents/GitHub/ph351-Computational_Physics_UOC/project_1_pde/build/CMakeFiles/pde_1d.dir
-/Users/jasonandronis/Documents/GitHub/ph351-Computational_Physics_UOC/project_1_pde/build/CMakeFiles/pde_2d.dir
-/Users/jasonandronis/Documents/GitHub/ph351-Computational_Physics_UOC/project_1_pde/build/CMakeFiles/package.dir
-/Users/jasonandronis/Documents/GitHub/ph351-Computational_Physics_UOC/project_1_pde/build/CMakeFiles/package_source.dir
-/Users/jasonandronis/Documents/GitHub/ph351-Computational_Physics_UOC/project_1_pde/build/CMakeFiles/edit_cache.dir
-/Users/jasonandronis/Documents/GitHub/ph351-Computational_Physics_UOC/project_1_pde/build/CMakeFiles/rebuild_cache.dir
+/home/jason/Documents/uni/reposetories/ph351-Computational_Physics_UOC/project_1_pde/build/CMakeFiles/pde_1d.dir
+/home/jason/Documents/uni/reposetories/ph351-Computational_Physics_UOC/project_1_pde/build/CMakeFiles/pde_2d.dir
+/home/jason/Documents/uni/reposetories/ph351-Computational_Physics_UOC/project_1_pde/build/CMakeFiles/package.dir
+/home/jason/Documents/uni/reposetories/ph351-Computational_Physics_UOC/project_1_pde/build/CMakeFiles/package_source.dir
+/home/jason/Documents/uni/reposetories/ph351-Computational_Physics_UOC/project_1_pde/build/CMakeFiles/edit_cache.dir
+/home/jason/Documents/uni/reposetories/ph351-Computational_Physics_UOC/project_1_pde/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,6 @@
+# ninja log v5
+0	2	0	clean	a31eedcededa8236
+512	551	1655219304133333039	mock_1	500df1fbfd761e5e
+0	512	1655219304093333183	CMakeFiles/mock_1.dir/src/mock_exam_1.cpp.o	3a8aae38a7e8f543
+2	6938	1655225957574755888	CMakeFiles/mock_2.dir/src/mock_exam_2.cpp.o	5a31fd4f946812d5
+6938	6976	1655225957610755767	mock_2	2a0dd53abbd0ca73

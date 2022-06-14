@@ -1,7 +1,7 @@
 [
 {
-  "directory": "/Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/build",
-  "command": "/usr/local/bin/g++-11 -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6 -std=gnu++17 -o CMakeFiles/ed.dir/src/ed.cpp.o -c /Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/code/cpp/src/ed.cpp",
-  "file": "/Users/jasonandronis/Documents/GitHub/ph351/project_2_ed/code/cpp/src/ed.cpp"
+  "directory": "/home/jason/Documents/uni/reposetories/ph351-Computational_Physics_UOC/project_2_ed/build",
+  "command": "/usr/bin/g++ -g -std=gnu++17 -o CMakeFiles/ed.dir/src/ed.cpp.o -c /home/jason/Documents/uni/reposetories/ph351-Computational_Physics_UOC/project_2_ed/code/cpp/src/ed.cpp",
+  "file": "/home/jason/Documents/uni/reposetories/ph351-Computational_Physics_UOC/project_2_ed/code/cpp/src/ed.cpp"
 }
 ]

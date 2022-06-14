@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Release-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.0.0"
@@ -20,7 +20,7 @@
 					]
 				}
 			],
-			"name" : "Release",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -41,14 +41,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "pde_1d::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-pde_1d-Release-238e55ce9482e55267fb.json",
+					"jsonFile" : "target-pde_1d-Debug-69ee51c59d8c91244082.json",
 					"name" : "pde_1d",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "pde_2d::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-pde_2d-Release-1d5ee5e1f41e07506190.json",
+					"jsonFile" : "target-pde_2d-Debug-5cea2f2bf487e92f88dd.json",
 					"name" : "pde_2d",
 					"projectIndex" : 0
 				}
@@ -58,12 +58,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/jasonandronis/Documents/GitHub/ph351-Computational_Physics_UOC/project_1_pde/build",
-		"source" : "/Users/jasonandronis/Documents/GitHub/ph351-Computational_Physics_UOC/project_1_pde/code/cpp"
+		"build" : "/home/jason/Documents/uni/reposetories/ph351-Computational_Physics_UOC/project_1_pde/build",
+		"source" : "/home/jason/Documents/uni/reposetories/ph351-Computational_Physics_UOC/project_1_pde/code/cpp"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 4
+		"minor" : 3
 	}
 }

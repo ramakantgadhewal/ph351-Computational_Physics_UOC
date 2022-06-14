@@ -1,0 +1,7 @@
+{
+    "cmake.sourceDirectory": "${workspaceFolder}/code/cpp",
+    "files.associations": {
+        "cmath": "cpp",
+        "core": "cpp"
+    }
+}

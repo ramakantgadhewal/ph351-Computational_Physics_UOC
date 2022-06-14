@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "pde_1d"
+			"path" : "mock_3"
 		}
 	],
 	"backtrace" : 1,
@@ -10,7 +10,8 @@
 	{
 		"commands" : 
 		[
-			"add_executable"
+			"add_executable",
+			"include_directories"
 		],
 		"files" : 
 		[
@@ -24,7 +25,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 8,
+				"line" : 16,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 19,
 				"parent" : 0
 			}
 		]
@@ -35,10 +42,17 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-O3 -DNDEBUG -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6"
+					"fragment" : "-O3 -DNDEBUG"
 				},
 				{
 					"fragment" : "-std=gnu++17"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "/home/jason/Documents/uni/reposetories/ph351-Computational_Physics_UOC/mock_exam/code/cpp/../../../universal_code/cpp/src"
 				}
 			],
 			"language" : "CXX",
@@ -56,7 +70,7 @@
 			]
 		}
 	],
-	"id" : "pde_1d::@6890427a1f51a3e7e1df",
+	"id" : "mock_3::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -66,14 +80,14 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "-L/usr/local/opt/lapack/lib",
+				"fragment" : "-rdynamic",
 				"role" : "flags"
 			}
 		],
 		"language" : "CXX"
 	},
-	"name" : "pde_1d",
-	"nameOnDisk" : "pde_1d",
+	"name" : "mock_3",
+	"nameOnDisk" : "mock_3",
 	"paths" : 
 	{
 		"build" : ".",
@@ -87,6 +101,13 @@
 			[
 				0
 			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				1
+			]
 		}
 	],
 	"sources" : 
@@ -94,8 +115,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/pde_1d.cpp",
+			"path" : "src/mock_exam_3.cpp",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/mock_exam_3.h",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"

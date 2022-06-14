@@ -1,0 +1,87 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Release-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "mockexam",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "mock_1::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mock_1-Release-3d2ae3f17e59c1fe5817.json",
+					"name" : "mock_1",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mock_2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mock_2-Release-eefbafc53b30884db970.json",
+					"name" : "mock_2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mock_3::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mock_3-Release-5cf1a126d1041dfda25d.json",
+					"name" : "mock_3",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mock_4::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mock_4-Release-c91be9968b7c232cfe23.json",
+					"name" : "mock_4",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/jason/Documents/uni/reposetories/ph351-Computational_Physics_UOC/mock_exam/build",
+		"source" : "/home/jason/Documents/uni/reposetories/ph351-Computational_Physics_UOC/mock_exam/code/cpp"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
